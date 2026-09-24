@@ -9,7 +9,7 @@
   <meta property="og:url" content="https://delgadoliveira.github.io/">
   <meta property="og:title" content="Alan Delgado de Oliveira — Applied Scientist">
   <meta property="og:description" content="Evaluation, experimentation, and agentic AI features. Ph.D. in Operations Research.">
-  <meta property="og:image" content="https://avatars.githubusercontent.com/u/238089?v=4">
+  <meta property="og:image" content="https://delgadoliveira.github.io/assets/portrait.png">
   <meta name="twitter:card" content="summary">
   <title>Alan Delgado de Oliveira — Applied Scientist</title>
   <script>
@@ -27,7 +27,7 @@
       "@type": "Person",
       "name": "Alan Delgado de Oliveira",
       "url": "https://delgadoliveira.github.io/",
-      "image": "https://avatars.githubusercontent.com/u/238089?v=4",
+      "image": "https://delgadoliveira.github.io/assets/portrait.png",
       "jobTitle": "Senior Applied Scientist",
       "worksFor": { "@type": "Organization", "name": "Microsoft" },
       "alumniOf": { "@type": "CollegeOrUniversity", "name": "Federal University of Rio Grande do Sul" },
@@ -587,10 +587,11 @@
           <a class="button" href="#practice">Evaluation methodology <span aria-hidden="true">↓</span></a>
           <a class="button secondary" href="#writing">Technical writing ↓</a>
           <a class="button secondary" href="#research">Publications ↓</a>
+          <button class="button secondary" type="button" id="printCv">Print as CV <span aria-hidden="true">⎙</span></button>
         </div>
       </div>
       <div class="portrait-wrap" aria-label="Portrait of Alan Delgado de Oliveira">
-        <img class="portrait" src="https://avatars.githubusercontent.com/u/238089?v=4" alt="Alan Delgado de Oliveira">
+        <img class="portrait" src="/assets/portrait.png" width="460" height="460" loading="eager" decoding="async" alt="Alan Delgado de Oliveira">
         <div class="status"><strong>Seattle metropolitan area</strong>Originally from Rio Grande do Sul, Brazil.</div>
       </div>
     </section>
@@ -716,7 +717,7 @@
             </div>
           </article>
           <article class="role reveal">
-            <div class="role-time">2019 — 2026 · PART-TIME</div>
+            <div class="role-time">Since 2019 · PART-TIME</div>
             <div>
               <h3>Guest Lecturer, MBA in Business Analytics</h3>
               <p class="role-company">Federal University of Rio Grande do Sul</p>
@@ -1003,8 +1004,8 @@
   <footer>
     <div class="footer-row shell">
       <span>© <span id="year"></span> Alan Delgado de Oliveira</span>
-      <span>Built for the open web · <a href="https://github.com/delgadoliveira" target="_blank" rel="noreferrer">@delgadoliveira</a></span>
-     · <a href="/colophon/">Colophon</a></div>
+      <span>Built for the open web · <a href="https://github.com/delgadoliveira" target="_blank" rel="noreferrer">@delgadoliveira</a> · <a href="/colophon/">Colophon</a></span>
+    </div>
   </footer>
 
   <script>
@@ -1030,6 +1031,43 @@
     }, { threshold: 0.12 });
 
     document.querySelectorAll(".reveal").forEach((element) => reveal.observe(element));
+
+    // The page doubles as a printable CV; a dedicated print stylesheet reflows it.
+    const printCv = document.getElementById("printCv");
+    if (printCv) printCv.addEventListener("click", () => window.print());
+
+    // Mark the section currently in view so the nav reflects position on a long page.
+    (() => {
+      const links = Array.from(document.querySelectorAll(".nav-links a[href^='#']"));
+      if (!links.length) return;
+      const byId = new Map();
+      links.forEach((a) => {
+        const el = document.getElementById(a.getAttribute("href").slice(1));
+        if (el) byId.set(el, a);
+      });
+      if (!byId.size) return;
+
+      let current = null;
+      const spy = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const link = byId.get(entry.target);
+            if (!link || link === current) return;
+            if (current) {
+              current.classList.remove("is-current");
+              current.removeAttribute("aria-current");
+            }
+            link.classList.add("is-current");
+            link.setAttribute("aria-current", "true");
+            current = link;
+          });
+        },
+        // Trigger around the upper third so the highlight matches what is being read.
+        { rootMargin: "-25% 0px -65% 0px", threshold: 0 }
+      );
+      byId.forEach((_, section) => spy.observe(section));
+    })();
   </script>
 </body>
 </html>
