@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="What is automated on this site and what is not, why the boundary is drawn where it is, and how to check every claim independently.">
+  <link rel="canonical" href="https://delgadoliveira.github.io/colophon/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Colophon — Alan Delgado">
+  <meta property="og:description" content="What is automated on this site, what is judged by hand, and how to verify either one.">
+  <title>Colophon — Alan Delgado</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("clawpilotTheme");
+      const stored = localStorage.getItem("portfolio-theme");
+      const theme =
+        param || stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <link rel="stylesheet" href="/assets/theme.css">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--cp-bg);
+      color: var(--cp-text);
+      font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.72;
+    }
+    a { color: var(--cp-link); }
+    .shell { width: min(820px, calc(100% - 40px)); margin: 0 auto; }
+    header {
+      border-bottom: 1px solid var(--cp-border);
+      background: var(--cp-overlay);
+      backdrop-filter: blur(16px);
+    }
+    nav {
+      width: min(980px, calc(100% - 40px));
+      min-height: 68px;
+      margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    }
+    .brand { color: var(--cp-text); font-weight: 800; text-decoration: none; }
+    .brand span { color: var(--cp-accent); }
+    .nav-actions { display: flex; align-items: center; gap: 16px; }
+    .nav-actions a { color: var(--cp-text-muted); font-size: 0.9rem; font-weight: 700; text-decoration: none; }
+    .nav-actions a:hover { color: var(--cp-accent); }
+    .theme-btn {
+      width: 40px; height: 40px;
+      border: 1px solid var(--cp-border);
+      border-radius: 0.625rem;
+      background: var(--cp-surface);
+      color: var(--cp-text);
+      cursor: pointer;
+    }
+    main { padding: 72px 0 96px; }
+    .kicker {
+      font-family: Consolas, "Courier New", Courier, monospace;
+      font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--cp-accent); margin: 0 0 12px;
+    }
+    h1 { margin: 0 0 18px; }
+    .dek { font-size: 1.12rem; color: var(--cp-text-muted); margin: 0 0 16px; }
+    section { margin-top: 64px; }
+    h2 { margin: 0 0 8px; font-size: 1.4rem; }
+    .sec-kicker {
+      font-family: Consolas, "Courier New", Courier, monospace;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--cp-text-soft); margin: 0 0 6px;
+    }
+    p { margin: 0 0 14px; }
+
+    .ledger { margin-top: 26px; }
+    .row {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 6px 22px;
+      padding: 20px 0;
+      border-top: 1px solid var(--cp-border);
+    }
+    .row:first-child { border-top: none; }
+    .row h3 {
+      margin: 0; font-size: 0.98rem;
+      font-family: Consolas, "Courier New", Courier, monospace;
+      font-weight: 700;
+    }
+    .row h3 a { color: var(--cp-accent); text-decoration: none; }
+    .row h3 a:hover { text-decoration: underline; }
+    .facet { margin: 0 0 8px; font-size: 0.93rem; line-height: 1.62; }
+    .facet:last-child { margin-bottom: 0; }
+    .tag {
+      display: inline-block; min-width: 74px;
+      font-family: Consolas, "Courier New", Courier, monospace;
+      font-size: 0.66rem; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      margin-right: 10px;
+    }
+    .tag.auto { color: var(--cp-text-soft); }
+    .tag.judged { color: var(--cp-accent); }
+    .tag.check { color: var(--cp-text-soft); }
+
+    .thesis {
+      margin: 30px 0 0;
+      padding: 22px 26px;
+      border-left: 3px solid var(--cp-accent);
+      background: var(--cp-accent-soft);
+      border-radius: 0 0.625rem 0.625rem 0;
+    }
+    .thesis p { margin: 0; font-size: 1.02rem; }
+    .thesis p + p { margin-top: 12px; }
+
+    ul { margin: 0 0 14px; padding-left: 20px; }
+    li { margin-bottom: 9px; }
+    code {
+      font-family: Consolas, "Courier New", Courier, monospace;
+      font-size: 0.86em;
+      background: var(--cp-surface);
+      border: 1px solid var(--cp-border);
+      border-radius: 0.3rem;
+      padding: 1px 5px;
+    }
+    .limits { border: 1px solid var(--cp-border); border-radius: 0.625rem; padding: 24px 26px; background: var(--cp-surface); }
+    .limits h2 { font-size: 1.2rem; }
+    footer {
+      margin-top: 80px; padding: 24px 0;
+      border-top: 1px solid var(--cp-border);
+      color: var(--cp-text-muted); font-size: 0.84rem;
+    }
+    footer a { color: var(--cp-text-muted); }
+    :focus-visible { outline: 3px solid var(--cp-accent); outline-offset: 3px; }
+    .skip {
+      position: absolute; left: -9999px;
+      background: var(--cp-accent); color: var(--cp-accent-fg);
+      padding: 10px 16px; border-radius: 0 0 0.5rem 0;
+      text-decoration: none; font-weight: 700;
+    }
+    .skip:focus { left: 0; top: 0; z-index: 100; }
+    @media (max-width: 640px) {
+      .shell, nav { width: min(100% - 24px, 820px); }
+      main { padding-top: 56px; }
+      .row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header>
+    <nav aria-label="Primary navigation">
+      <a class="brand" href="/"><span>A.</span> Delgado</a>
+      <div class="nav-actions">
+        <a href="/explorer/">Explorer</a>
+        <a href="/reading/">Reading</a>
+        <a href="/writing/">Writing</a>
+        <a href="/">Portfolio</a>
+        <button class="theme-btn" id="themeToggle" aria-label="Toggle color theme" aria-pressed="false">◐</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="shell" id="main">
+    <p class="kicker">Colophon · How this site is made</p>
+    <h1>What is automated here, and what is not</h1>
+    <p class="dek">
+      Parts of this site update themselves. Parts of it are decisions I made and would have to
+      defend. Those are not the same kind of claim, so this page separates them and tells you how
+      to check either one.
+    </p>
+
+    <div class="thesis">
+      <p>
+        A portfolio can now be generated in an afternoon, which means polish no longer
+        distinguishes anyone. What does not automate is judgment: deciding what to measure,
+        what a result fails to establish, and when evidence is too weak to act on.
+      </p>
+      <p>
+        So the rule I apply to this site is the same one I apply to evaluation work —
+        <strong>automate the collection, never the conclusion</strong>, and make every claim
+        checkable by someone who does not trust me.
+      </p>
+    </div>
+
+    <section>
+      <p class="sec-kicker">01 / The ledger</p>
+      <h2>Surface by surface</h2>
+      <p>
+        For each part of the site: what runs on its own, what I decided, and how you can verify it
+        without taking my word for anything.
+      </p>
+
+      <div class="ledger">
+        <div class="row">
+          <h3><a href="/reading/">/reading/</a></h3>
+          <div>
+            <p class="facet"><span class="tag auto">Automated</span>Candidate papers are pulled weekly from the Hugging Face papers API, scored against per-track keywords with domain anchors and negative penalties, then ranked. All titles, authors, dates and abstracts are fetched, never typed by hand.</p>
+            <p class="facet"><span class="tag judged">Judged</span>Which four tracks exist, which papers are foundational, and the <em>Establishes / Doesn’t settle</em> note on each one. Discovered papers carry no note, so the two layers stay visibly distinct.</p>
+            <p class="facet"><span class="tag check">Check it</span>Read <code>scripts/fetch_papers.py</code> for the exact scoring, or <a href="/reading/papers.json">papers.json</a> for the raw output.</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <h3><a href="/explorer/">/explorer/</a></h3>
+          <div>
+            <p class="facet"><span class="tag auto">Automated</span>Nothing is precomputed. Every interval, effect estimate and rollout recommendation is calculated in your browser from the inputs you set.</p>
+            <p class="facet"><span class="tag judged">Judged</span>Which three layers of evidence matter, the decision rule that combines them, and the explicit list of what the model ignores — clustering, multiplicity, novelty effects, non-random ring assignment, construct validity.</p>
+            <p class="facet"><span class="tag check">Check it</span>Move the sliders until it disagrees with you. The same procedures are implemented and unit-tested in <a href="https://github.com/delgadoliveira/agent-evaluation-playbook" target="_blank" rel="noreferrer">agent-evaluation-playbook</a>.</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <h3><a href="https://github.com/delgadoliveira/agent-evaluation-playbook" target="_blank" rel="noreferrer">playbook</a></h3>
+          <div>
+            <p class="facet"><span class="tag auto">Automated</span>Unit tests and an end-to-end demo run on Python 3.11, 3.12 and 3.13 on every push. The badge in that README reflects the real result, including when it fails.</p>
+            <p class="facet"><span class="tag judged">Judged</span>That offline, online and rollout evidence answer different questions and should not be collapsed into a single score.</p>
+            <p class="facet"><span class="tag check">Check it</span>Clone it and run two commands. No dependencies, no install, no network access. The README states the exact output you should see.</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <h3>this site</h3>
+          <div>
+            <p class="facet"><span class="tag auto">Automated</span>Every push is checked for malformed HTML, duplicate element IDs, and internal links that no longer resolve.</p>
+            <p class="facet"><span class="tag judged">Judged</span>All prose, including this sentence. Written and revised rather than generated once and left alone.</p>
+            <p class="facet"><span class="tag check">Check it</span>The workflows live in <code>.github/workflows/</code> of the site repository and their run history is public.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <p class="sec-kicker">02 / Reasoning</p>
+      <h2>Why the boundary sits there</h2>
+      <p>
+        The same argument applies to evaluating an agent and to publishing a portfolio: an automated
+        process is good at producing candidates and bad at deciding what they mean.
+      </p>
+      <ul>
+        <li>
+          <strong>Coverage is cheap; selection is not.</strong> A feed listing everything recent
+          proves only that a script ran. Five papers with a stated reason for each is a claim
+          somebody can argue with.
+        </li>
+        <li>
+          <strong>A negative statement carries more information than a positive one.</strong> Saying
+          what a paper establishes is mostly summary. Saying what it fails to settle requires having
+          decided which limitation actually matters.
+        </li>
+        <li>
+          <strong>Verifiability beats assertion.</strong> “I know how to run experiments” cannot be
+          falsified. A page that computes a confidence interval in front of you, backed by a
+          repository with passing tests, can be checked — and can be shown wrong.
+        </li>
+      </ul>
+    </section>
+
+    <section class="limits">
+      <p class="sec-kicker">03 / Limits</p>
+      <h2>What this site does not demonstrate</h2>
+      <p>
+        Worth stating plainly, because a portfolio that claims everything is evidence of nothing.
+      </p>
+      <ul>
+        <li>
+          Everything here uses <strong>synthetic or public data</strong>. None of it reflects any
+          internal system, metric, threshold or result.
+        </li>
+        <li>
+          The explorer models <strong>one simplified decision</strong>. Real analysis deals with
+          clustered and repeated observations, many simultaneous metrics, seasonality and novelty
+          effects, and rings that were never randomly assigned.
+        </li>
+        <li>
+          Reading widely is not the same as <strong>having reproduced any of it</strong>. The notes
+          describe what each paper reports; they are not independent replications.
+        </li>
+        <li>
+          Passing tests show code does what its author intended. They say nothing about whether the
+          <strong>intent was correct</strong> — which is the part that actually needs review.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <p class="sec-kicker">04 / Build</p>
+      <h2>Construction</h2>
+      <p>
+        Static HTML with no framework, no build step and no analytics. A single shared stylesheet
+        holds the palette and typography; there are no third-party fonts and no trackers. The
+        reading data is one JSON file regenerated by a scheduled job. Hosted on GitHub Pages from
+        <a href="https://github.com/delgadoliveira/delgadoliveira.github.io" target="_blank" rel="noreferrer">the site repository</a>,
+        which is public, so every claim on this page can be read as source.
+      </p>
+    </section>
+  </main>
+
+  <footer class="shell">
+    <p>
+      © <span id="year">2026</span> Alan Delgado de Oliveira ·
+      <a href="/">Portfolio</a> ·
+      <a href="/reading/">Reading</a> ·
+      <a href="/explorer/">Explorer</a>
+    </p>
+  </footer>
+
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const btn = document.getElementById("themeToggle");
+      const sync = () => btn.setAttribute("aria-pressed", root.getAttribute("data-theme") === "dark" ? "true" : "false");
+      sync();
+      btn.addEventListener("click", () => {
+        const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+        root.setAttribute("data-theme", next);
+        localStorage.setItem("portfolio-theme", next);
+        sync();
+      });
+      document.getElementById("year").textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>

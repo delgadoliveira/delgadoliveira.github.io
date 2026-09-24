@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-24T03:52:15Z",
+  "generated": "2026-09-24T04:07:23Z",
   "source": "Hugging Face papers API",
   "min_score": 9,
   "tracks": [
@@ -25,7 +25,9 @@
           "github": "https://github.com/lm-sys/fastchat",
           "github_stars": 39550,
           "url": "https://arxiv.org/abs/2306.05685",
-          "hf_url": "https://huggingface.co/papers/2306.05685"
+          "hf_url": "https://huggingface.co/papers/2306.05685",
+          "establishes": "A strong model judge can reach roughly the same agreement with human raters that humans reach with each other on open-ended preference comparisons.",
+          "unsettled": "Validity. The same paper documents position, verbosity and self-enhancement bias, so agreeing with a crowd is not evidence that the judge measures the property you actually care about."
         },
         {
           "id": "2310.06770",
@@ -44,7 +46,9 @@
           "github": "https://github.com/SWE-bench/SWE-bench",
           "github_stars": 5897,
           "url": "https://arxiv.org/abs/2310.06770",
-          "hf_url": "https://huggingface.co/papers/2310.06770"
+          "hf_url": "https://huggingface.co/papers/2310.06770",
+          "establishes": "Evaluation can be execution-verified against real repository issues and their tests, instead of graded by another model.",
+          "unsettled": "What the score means. Pass rates mix genuine capability with issue specification quality and with whether the right files were retrieved."
         },
         {
           "id": "2407.10817",
@@ -63,7 +67,9 @@
           "github": "",
           "github_stars": 0,
           "url": "https://arxiv.org/abs/2407.10817",
-          "hf_url": "https://huggingface.co/papers/2407.10817"
+          "hf_url": "https://huggingface.co/papers/2407.10817",
+          "establishes": "Autoraters trained across many human-judgment datasets generalise to unseen evaluation tasks better than general-purpose models prompted as judges.",
+          "unsettled": "Transfer to a specific product rubric, which usually resembles nothing in the training mixture."
         },
         {
           "id": "2406.12045",
@@ -81,7 +87,9 @@
           "github": "https://github.com/sierra-research/tau-bench",
           "github_stars": 1445,
           "url": "https://arxiv.org/abs/2406.12045",
-          "hf_url": "https://huggingface.co/papers/2406.12045"
+          "hf_url": "https://huggingface.co/papers/2406.12045",
+          "establishes": "Single-run success overstates reliability. Its pass^k metric shows consistency degrading sharply across repeated trials of the same task.",
+          "unsettled": "Realism, since the user is simulated. The reliability finding survives that caveat, and is the reason to report variance rather than a mean."
         },
         {
           "id": "2308.03688",
@@ -100,7 +108,9 @@
           "github": "https://github.com/thudm/agentbench",
           "github_stars": 3745,
           "url": "https://arxiv.org/abs/2308.03688",
-          "hf_url": "https://huggingface.co/papers/2308.03688"
+          "hf_url": "https://huggingface.co/papers/2308.03688",
+          "establishes": "How differently one agent performs across eight distinct environments.",
+          "unsettled": "How to aggregate. Averaging heterogeneous environments yields a number that moves for reasons you cannot attribute to anything actionable."
         }
       ],
       "recent": [
@@ -245,7 +255,9 @@
           "github": "",
           "github_stars": 0,
           "url": "https://arxiv.org/abs/2210.03629",
-          "hf_url": "https://huggingface.co/papers/2210.03629"
+          "hf_url": "https://huggingface.co/papers/2210.03629",
+          "establishes": "Interleaving reasoning with external actions beats either alone, and grounding steps in retrieved observations reduces fabrication.",
+          "unsettled": "Cost. Every step adds tokens and latency, which compounds once the loop runs many times per task."
         },
         {
           "id": "2302.04761",
@@ -264,7 +276,9 @@
           "github": "",
           "github_stars": 0,
           "url": "https://arxiv.org/abs/2302.04761",
-          "hf_url": "https://huggingface.co/papers/2302.04761"
+          "hf_url": "https://huggingface.co/papers/2302.04761",
+          "establishes": "A model can learn when to call a tool in a self-supervised way, kept only when the call measurably reduces loss.",
+          "unsettled": "Scaling to large or changing tool inventories. The tool set here is small and fixed."
         },
         {
           "id": "2303.11366",
@@ -283,7 +297,9 @@
           "github": "",
           "github_stars": 0,
           "url": "https://arxiv.org/abs/2303.11366",
-          "hf_url": "https://huggingface.co/papers/2303.11366"
+          "hf_url": "https://huggingface.co/papers/2303.11366",
+          "establishes": "Verbal self-critique carried across attempts improves success without updating any weights.",
+          "unsettled": "Where the gain comes from. It needs a reliable success signal to reflect against, which is precisely what production tasks lack."
         },
         {
           "id": "2308.08155",
@@ -302,7 +318,9 @@
           "github": "https://github.com/cmbagent/cmbagent",
           "github_stars": 0,
           "url": "https://arxiv.org/abs/2308.08155",
-          "hf_url": "https://huggingface.co/papers/2308.08155"
+          "hf_url": "https://huggingface.co/papers/2308.08155",
+          "establishes": "A concrete pattern for composing several conversing agents with defined human-in-the-loop points.",
+          "unsettled": "Whether multiple agents beat one well-prompted agent on a given task. The framework does not answer that; only an experiment does."
         }
       ],
       "recent": [
@@ -449,7 +467,9 @@
           "github": "",
           "github_stars": 0,
           "url": "https://arxiv.org/abs/2201.11903",
-          "hf_url": "https://huggingface.co/papers/2201.11903"
+          "hf_url": "https://huggingface.co/papers/2201.11903",
+          "establishes": "Eliciting intermediate steps improves reasoning tasks, and the effect depends strongly on model scale.",
+          "unsettled": "Faithfulness. The stated reasoning is not necessarily the computation that produced the answer, so it cannot be read as an explanation."
         },
         {
           "id": "2005.11401",
@@ -468,7 +488,9 @@
           "github": "",
           "github_stars": 0,
           "url": "https://arxiv.org/abs/2005.11401",
-          "hf_url": "https://huggingface.co/papers/2005.11401"
+          "hf_url": "https://huggingface.co/papers/2005.11401",
+          "establishes": "Retrieval lets knowledge be updated without retraining, and lets an answer be attributed to a source.",
+          "unsettled": "Retrieval quality itself, which becomes the dominant error term as soon as generation is competent."
         },
         {
           "id": "2307.03172",
@@ -487,7 +509,9 @@
           "github": "https://github.com/nelson-liu/lost-in-the-middle",
           "github_stars": 394,
           "url": "https://arxiv.org/abs/2307.03172",
-          "hf_url": "https://huggingface.co/papers/2307.03172"
+          "hf_url": "https://huggingface.co/papers/2307.03172",
+          "establishes": "Position inside the context window changes accuracy: relevant material placed in the middle is used least.",
+          "unsettled": "The remedy. But it does mean long-context claims should be tested by position rather than assumed uniform."
         },
         {
           "id": "2203.11171",
@@ -506,7 +530,9 @@
           "github": "",
           "github_stars": 0,
           "url": "https://arxiv.org/abs/2203.11171",
-          "hf_url": "https://huggingface.co/papers/2203.11171"
+          "hf_url": "https://huggingface.co/papers/2203.11171",
+          "establishes": "Sampling several reasoning paths and taking the majority beats a single greedy decode.",
+          "unsettled": "Whether it is worth it. The gain is bought with k times the inference cost, making this a deployment decision rather than a modelling one."
         }
       ],
       "recent": [
@@ -657,7 +683,9 @@
           "github": "",
           "github_stars": 0,
           "url": "https://arxiv.org/abs/2212.08073",
-          "hf_url": "https://huggingface.co/papers/2212.08073"
+          "hf_url": "https://huggingface.co/papers/2212.08073",
+          "establishes": "Explicit written principles plus model feedback can substitute for human harm labels when training for harmlessness.",
+          "unsettled": "Who writes the principles. That is where the actual value judgements sit, and the method does not make them for you."
         },
         {
           "id": "2203.02155",
@@ -676,7 +704,9 @@
           "github": "https://github.com/openai/following-instructions-human-feedback",
           "github_stars": 1256,
           "url": "https://arxiv.org/abs/2203.02155",
-          "hf_url": "https://huggingface.co/papers/2203.02155"
+          "hf_url": "https://huggingface.co/papers/2203.02155",
+          "establishes": "Alignment to instructions beats raw scale on human preference: a 1.3B model was preferred over 175B GPT-3.",
+          "unsettled": "Whose preferences. The paper is explicit that it aligns to a small group of labellers, not to any general notion of helpfulness."
         },
         {
           "id": "2209.13085",
@@ -694,7 +724,9 @@
           "github": "",
           "github_stars": 0,
           "url": "https://arxiv.org/abs/2209.13085",
-          "hf_url": "https://huggingface.co/papers/2209.13085"
+          "hf_url": "https://huggingface.co/papers/2209.13085",
+          "establishes": "A formal account of when optimising a proxy diverges from the true objective, with a proof that the conditions for non-hackability are highly restrictive.",
+          "unsettled": "Detection in practice. That restrictiveness is the argument for reporting guardrail metrics alongside the target metric, not instead of reasoning about the proxy."
         }
       ],
       "recent": [

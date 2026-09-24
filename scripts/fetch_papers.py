@@ -71,11 +71,63 @@ TRACKS = [
             "failure modes of compressing a complex experience into one number."
         ),
         "curated": [
-            "2306.05685",  # Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena
-            "2310.06770",  # SWE-bench
-            "2407.10817",  # Foundational Autoraters (FLAMe)
-            "2406.12045",  # tau-bench: tool-agent-user interaction benchmark
-            "2308.03688",  # AgentBench
+            {
+                "id": "2306.05685",
+                "establishes": (
+                    "A strong model judge can reach roughly the same agreement with human "
+                    "raters that humans reach with each other on open-ended preference "
+                    "comparisons."
+                ),
+                "unsettled": (
+                    "Validity. The same paper documents position, verbosity and "
+                    "self-enhancement bias, so agreeing with a crowd is not evidence that "
+                    "the judge measures the property you actually care about."
+                ),
+            },
+            {
+                "id": "2310.06770",
+                "establishes": (
+                    "Evaluation can be execution-verified against real repository issues "
+                    "and their tests, instead of graded by another model."
+                ),
+                "unsettled": (
+                    "What the score means. Pass rates mix genuine capability with issue "
+                    "specification quality and with whether the right files were retrieved."
+                ),
+            },
+            {
+                "id": "2407.10817",
+                "establishes": (
+                    "Autoraters trained across many human-judgment datasets generalise to "
+                    "unseen evaluation tasks better than general-purpose models prompted "
+                    "as judges."
+                ),
+                "unsettled": (
+                    "Transfer to a specific product rubric, which usually resembles "
+                    "nothing in the training mixture."
+                ),
+            },
+            {
+                "id": "2406.12045",
+                "establishes": (
+                    "Single-run success overstates reliability. Its pass^k metric shows "
+                    "consistency degrading sharply across repeated trials of the same task."
+                ),
+                "unsettled": (
+                    "Realism, since the user is simulated. The reliability finding survives "
+                    "that caveat, and is the reason to report variance rather than a mean."
+                ),
+            },
+            {
+                "id": "2308.03688",
+                "establishes": (
+                    "How differently one agent performs across eight distinct environments."
+                ),
+                "unsettled": (
+                    "How to aggregate. Averaging heterogeneous environments yields a number "
+                    "that moves for reasons you cannot attribute to anything actionable."
+                ),
+            },
         ],
         "queries": [
             "LLM as a judge evaluation",
@@ -97,10 +149,50 @@ TRACKS = [
             "model into a system that executes real work."
         ),
         "curated": [
-            "2210.03629",  # ReAct
-            "2302.04761",  # Toolformer
-            "2303.11366",  # Reflexion
-            "2308.08155",  # AutoGen
+            {
+                "id": "2210.03629",
+                "establishes": (
+                    "Interleaving reasoning with external actions beats either alone, and "
+                    "grounding steps in retrieved observations reduces fabrication."
+                ),
+                "unsettled": (
+                    "Cost. Every step adds tokens and latency, which compounds once the "
+                    "loop runs many times per task."
+                ),
+            },
+            {
+                "id": "2302.04761",
+                "establishes": (
+                    "A model can learn when to call a tool in a self-supervised way, kept "
+                    "only when the call measurably reduces loss."
+                ),
+                "unsettled": (
+                    "Scaling to large or changing tool inventories. The tool set here is "
+                    "small and fixed."
+                ),
+            },
+            {
+                "id": "2303.11366",
+                "establishes": (
+                    "Verbal self-critique carried across attempts improves success without "
+                    "updating any weights."
+                ),
+                "unsettled": (
+                    "Where the gain comes from. It needs a reliable success signal to "
+                    "reflect against, which is precisely what production tasks lack."
+                ),
+            },
+            {
+                "id": "2308.08155",
+                "establishes": (
+                    "A concrete pattern for composing several conversing agents with "
+                    "defined human-in-the-loop points."
+                ),
+                "unsettled": (
+                    "Whether multiple agents beat one well-prompted agent on a given task. "
+                    "The framework does not answer that; only an experiment does."
+                ),
+            },
         ],
         "queries": [
             "LLM agent tool use",
@@ -124,10 +216,50 @@ TRACKS = [
             "sensitive results are to the way a task is phrased."
         ),
         "curated": [
-            "2201.11903",  # Chain-of-Thought Prompting
-            "2005.11401",  # Retrieval-Augmented Generation
-            "2307.03172",  # Lost in the Middle
-            "2203.11171",  # Self-Consistency
+            {
+                "id": "2201.11903",
+                "establishes": (
+                    "Eliciting intermediate steps improves reasoning tasks, and the effect "
+                    "depends strongly on model scale."
+                ),
+                "unsettled": (
+                    "Faithfulness. The stated reasoning is not necessarily the computation "
+                    "that produced the answer, so it cannot be read as an explanation."
+                ),
+            },
+            {
+                "id": "2005.11401",
+                "establishes": (
+                    "Retrieval lets knowledge be updated without retraining, and lets an "
+                    "answer be attributed to a source."
+                ),
+                "unsettled": (
+                    "Retrieval quality itself, which becomes the dominant error term as "
+                    "soon as generation is competent."
+                ),
+            },
+            {
+                "id": "2307.03172",
+                "establishes": (
+                    "Position inside the context window changes accuracy: relevant material "
+                    "placed in the middle is used least."
+                ),
+                "unsettled": (
+                    "The remedy. But it does mean long-context claims should be tested by "
+                    "position rather than assumed uniform."
+                ),
+            },
+            {
+                "id": "2203.11171",
+                "establishes": (
+                    "Sampling several reasoning paths and taking the majority beats a "
+                    "single greedy decode."
+                ),
+                "unsettled": (
+                    "Whether it is worth it. The gain is bought with k times the inference "
+                    "cost, making this a deployment decision rather than a modelling one."
+                ),
+            },
         ],
         "queries": [
             "prompt engineering large language models",
@@ -151,9 +283,41 @@ TRACKS = [
             "hacking, and the risks that only appear once real users are exposed."
         ),
         "curated": [
-            "2212.08073",  # Constitutional AI
-            "2203.02155",  # InstructGPT
-            "2209.13085",  # Defining and Characterizing Reward Hacking
+            {
+                "id": "2212.08073",
+                "establishes": (
+                    "Explicit written principles plus model feedback can substitute for "
+                    "human harm labels when training for harmlessness."
+                ),
+                "unsettled": (
+                    "Who writes the principles. That is where the actual value judgements "
+                    "sit, and the method does not make them for you."
+                ),
+            },
+            {
+                "id": "2203.02155",
+                "establishes": (
+                    "Alignment to instructions beats raw scale on human preference: a 1.3B "
+                    "model was preferred over 175B GPT-3."
+                ),
+                "unsettled": (
+                    "Whose preferences. The paper is explicit that it aligns to a small "
+                    "group of labellers, not to any general notion of helpfulness."
+                ),
+            },
+            {
+                "id": "2209.13085",
+                "establishes": (
+                    "A formal account of when optimising a proxy diverges from the true "
+                    "objective, with a proof that the conditions for non-hackability are "
+                    "highly restrictive."
+                ),
+                "unsettled": (
+                    "Detection in practice. That restrictiveness is the argument for "
+                    "reporting guardrail metrics alongside the target metric, not instead "
+                    "of reasoning about the proxy."
+                ),
+            },
         ],
         "queries": [
             "online controlled experiment",
@@ -325,7 +489,7 @@ def main() -> int:
 
     print(f"candidate pool: {len(pool)}")
 
-    curated_ids = {i for t in TRACKS for i in t["curated"]}
+    curated_ids = {entry["id"] for t in TRACKS for entry in t["curated"]}
     payload = {
         "generated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "source": "Hugging Face papers API",
@@ -350,13 +514,18 @@ def main() -> int:
     for track in TRACKS:
         print(f"track: {track['id']}")
         curated = []
-        for arxiv_id in track["curated"]:
+        for entry in track["curated"]:
+            arxiv_id = entry["id"]
             data = get_json(f"/papers/{arxiv_id}")
             if not data:
                 print(f"  ! curated id not resolved: {arxiv_id}", file=sys.stderr)
                 continue
             item = normalize(data)
             if item:
+                # Metadata is fetched; the two notes are the editorial layer and are
+                # the only hand-written content in the feed.
+                item["establishes"] = entry["establishes"]
+                item["unsettled"] = entry["unsettled"]
                 curated.append(item)
             time.sleep(0.5)
 

@@ -98,6 +98,39 @@
       margin-bottom: 6px;
     }
     .item-summary { margin: 0; font-size: 0.92rem; line-height: 1.6; }
+    .assessment { margin: 0; }
+    .claim {
+      margin: 0 0 6px; font-size: 0.92rem; line-height: 1.6;
+      color: var(--cp-text);
+    }
+    .claim:last-child { margin-bottom: 0; }
+    .claim-label {
+      display: inline-block;
+      font-family: Consolas, "Courier New", Courier, monospace;
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--cp-accent);
+      border-bottom: 1px solid var(--cp-accent);
+      margin-right: 8px;
+      padding-bottom: 1px;
+    }
+    .claim-label.doesnt { color: var(--cp-text-soft); border-bottom-color: var(--cp-border-strong, var(--cp-border)); }
+    .abstract { margin-top: 8px; }
+    .abstract summary {
+      cursor: pointer; list-style: none;
+      font-family: Consolas, "Courier New", Courier, monospace;
+      font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--cp-text-soft);
+    }
+    .abstract summary::-webkit-details-marker { display: none; }
+    .abstract summary::before { content: "+ "; }
+    .abstract[open] summary::before { content: "\2212 "; }
+    .abstract summary:hover { color: var(--cp-accent); }
+    .abstract p {
+      margin: 8px 0 0; font-size: 0.88rem; line-height: 1.6;
+      color: var(--cp-text-soft);
+      border-left: 2px solid var(--cp-border); padding-left: 12px;
+    }
     .badge {
       border: 1px solid var(--cp-border);
       border-radius: 0.3rem;
@@ -179,9 +212,13 @@
         <li><strong>Foundations are hand-picked, metadata is not.</strong> I choose the arXiv identifiers; titles, authors, and abstracts are always fetched from the Hugging Face papers API. Nothing is transcribed by hand, so a citation cannot silently drift from the real paper.</li>
         <li><strong>Recent work is filtered, not mirrored.</strong> Candidates come from the daily feed plus targeted searches, then pass a keyword model with per-track weights, penalties for off-domain topics, and a minimum score. Most candidates are rejected.</li>
         <li><strong>Relevance ranks above popularity.</strong> Upvotes break ties; they never drive the ordering. A widely shared paper that does not match the track does not appear.</li>
-        <li><strong>The automated half carries no endorsement.</strong> Foundations reflect a considered judgment. The recent section is a filtered view of what is being published, and inclusion is not a claim that a paper is correct or important.</li>
+        <li><strong>The automated half carries no endorsement.</strong> Foundations reflect a considered judgment, and each carries a note on what it establishes and what it leaves unsettled. The recent section is a filtered view of what is being published, deliberately left unannotated, and inclusion is not a claim that a paper is correct or important.</li>
       </ul>
       <p class="status" id="genStamp"></p>
+      <p class="disclaimer">
+        Where the automated and hand-judged parts of this site divide, and how to verify either, is
+        set out in the <a href="/colophon/">colophon</a>.
+      </p>
       <p class="disclaimer">
         Commentary reflects publicly available material and general methodology only, and represents my
         own views rather than those of my employer.
@@ -190,7 +227,7 @@
   </main>
 
   <footer>
-    <div class="shell">© <span id="year">2026</span> Alan Delgado de Oliveira · <a href="/">Portfolio</a> · <a href="/writing/">Writing</a> · <a href="/explorer/">Explorer</a></div>
+    <div class="shell">© <span id="year">2026</span> Alan Delgado de Oliveira · <a href="/">Portfolio</a> · <a href="/writing/">Writing</a> · <a href="/explorer/">Explorer</a> · <a href="/colophon/">Colophon</a></div>
   </footer>
 
   <script>
@@ -221,11 +258,27 @@
         if (p.github) {
           meta.push('<span class="badge"><a href="https://github.com/' + esc(p.github) + '" target="_blank" rel="noreferrer">code</a></span>');
         }
+        const hasNote = p.establishes || p.unsettled;
+        let body;
+        if (hasNote) {
+          body =
+            '<div class="assessment">' +
+            (p.establishes
+              ? '<p class="claim"><span class="claim-label">Establishes</span>' + esc(p.establishes) + "</p>"
+              : "") +
+            (p.unsettled
+              ? '<p class="claim"><span class="claim-label doesnt">Doesn\u2019t settle</span>' + esc(p.unsettled) + "</p>"
+              : "") +
+            "</div>" +
+            '<details class="abstract"><summary>Abstract</summary><p>' + esc(p.summary) + "</p></details>";
+        } else {
+          body = '<p class="item-summary">' + esc(p.summary) + "</p>";
+        }
         return (
           '<article class="item">' +
           '<p class="item-title"><a href="' + esc(p.url) + '" target="_blank" rel="noreferrer">' + esc(p.title) + "</a></p>" +
           '<div class="item-meta">' + meta.join("") + "</div>" +
-          '<p class="item-summary">' + esc(p.summary) + "</p>" +
+          body +
           "</article>"
         );
       }
