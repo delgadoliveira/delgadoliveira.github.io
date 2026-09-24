@@ -1,0 +1,842 @@
+{
+  "generated": "2026-09-24T03:44:03Z",
+  "source": "Hugging Face papers API",
+  "min_score": 9,
+  "tracks": [
+    {
+      "id": "evaluation",
+      "title": "Evaluation and measurement",
+      "blurb": "How to tell whether an agent is actually good: benchmark construction, automated judges and their calibration against human labels, and the failure modes of compressing a complex experience into one number.",
+      "curated": [
+        {
+          "id": "2306.05685",
+          "title": "Judging LLM-as-a-judge with MT-Bench and Chatbot Arena",
+          "authors": [
+            "Lianmin Zheng",
+            "Wei-Lin Chiang",
+            "Ying Sheng",
+            "Siyuan Zhuang",
+            "Zhanghao Wu"
+          ],
+          "author_count": 13,
+          "summary": "Evaluating large language model (LLM) based chat assistants is challenging due to their broad capabilities and the inadequacy of existing benchmarks in measuring human preferences. To address this, we explore using strong LLMs as judges to evaluate these models on more open-ended questions. We examine the usage and limitations of LLM-as-a-judge, such as position and verbosity biases and limited re…",
+          "published": "2023-06-09",
+          "upvotes": 44,
+          "github": "https://github.com/lm-sys/fastchat",
+          "github_stars": 39550,
+          "url": "https://arxiv.org/abs/2306.05685",
+          "hf_url": "https://huggingface.co/papers/2306.05685"
+        },
+        {
+          "id": "2310.06770",
+          "title": "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?",
+          "authors": [
+            "Carlos E. Jimenez",
+            "John Yang",
+            "Alexander Wettig",
+            "Shunyu Yao",
+            "Kexin Pei"
+          ],
+          "author_count": 7,
+          "summary": "Language models have outpaced our ability to evaluate them effectively, but for their future development it is essential to study the frontier of their capabilities. We consider real-world software engineering to be a rich, sustainable, and challenging testbed for evaluating the next generation of language models. We therefore introduce SWE-bench, an evaluation framework including 2,294 software e…",
+          "published": "2023-10-10",
+          "upvotes": 13,
+          "github": "https://github.com/SWE-bench/SWE-bench",
+          "github_stars": 5897,
+          "url": "https://arxiv.org/abs/2310.06770",
+          "hf_url": "https://huggingface.co/papers/2310.06770"
+        },
+        {
+          "id": "2407.10817",
+          "title": "Foundational Autoraters: Taming Large Language Models for Better Automatic Evaluation",
+          "authors": [
+            "Tu Vu",
+            "Kalpesh Krishna",
+            "Salaheddin Alzubi",
+            "Chris Tar",
+            "Manaal Faruqui"
+          ],
+          "author_count": 6,
+          "summary": "As large language models (LLMs) advance, it becomes more challenging to reliably evaluate their output due to the high costs of human evaluation. To make progress towards better LLM autoraters, we introduce FLAMe, a family of Foundational Large Autorater Models. FLAMe is trained on our large and diverse collection of 100+ quality assessment tasks comprising 5M+ human judgments, curated and standar…",
+          "published": "2024-07-15",
+          "upvotes": 14,
+          "github": "",
+          "github_stars": 0,
+          "url": "https://arxiv.org/abs/2407.10817",
+          "hf_url": "https://huggingface.co/papers/2407.10817"
+        },
+        {
+          "id": "2406.12045",
+          "title": "τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains",
+          "authors": [
+            "Shunyu Yao",
+            "Noah Shinn",
+            "Pedram Razavi",
+            "Karthik Narasimhan"
+          ],
+          "author_count": 4,
+          "summary": "Existing benchmarks do not test language agents on their interaction with human users or ability to follow domain-specific rules, both of which are vital for deploying them in real world applications. We propose tau-bench, a benchmark emulating dynamic conversations between a user (simulated by language models) and a language agent provided with domain-specific API tools and policy guidelines. We…",
+          "published": "2024-06-17",
+          "upvotes": 13,
+          "github": "https://github.com/sierra-research/tau-bench",
+          "github_stars": 1445,
+          "url": "https://arxiv.org/abs/2406.12045",
+          "hf_url": "https://huggingface.co/papers/2406.12045"
+        },
+        {
+          "id": "2308.03688",
+          "title": "AgentBench: Evaluating LLMs as Agents",
+          "authors": [
+            "Xiao Liu",
+            "Hao Yu",
+            "Hanchen Zhang",
+            "Yifan Xu",
+            "Xuanyu Lei"
+          ],
+          "author_count": 22,
+          "summary": "Large Language Models (LLMs) are becoming increasingly smart and autonomous, targeting real-world pragmatic missions beyond traditional NLP tasks. As a result, there has been an urgent need to evaluate LLMs as agents on challenging tasks in interactive environments. We present AgentBench, a multi-dimensional evolving benchmark that currently consists of 8 distinct environments to assess LLM-as-Age…",
+          "published": "2023-08-07",
+          "upvotes": 26,
+          "github": "https://github.com/thudm/agentbench",
+          "github_stars": 3745,
+          "url": "https://arxiv.org/abs/2308.03688",
+          "hf_url": "https://huggingface.co/papers/2308.03688"
+        }
+      ],
+      "recent": [
+        {
+          "id": "2604.16706",
+          "title": "Evaluating Tool-Using Language Agents: Judge Reliability, Propagation Cascades, and Runtime Mitigation in AgentProp-Bench",
+          "authors": [
+            "Bhaskar Gurram"
+          ],
+          "author_count": 1,
+          "summary": "Automated evaluation of tool-using large language model (LLM) agents is widely assumed to be reliable, but this assumption has rarely been validated against human annotation. We introduce AgentProp-Bench, a 2,000-task benchmark with 2,300 traces across four domains, nine production LLMs, and a 100-label human-validated subset. We quantify judge reliability, characterize error propagation, and eval…",
+          "published": "2026-04-16",
+          "upvotes": 1,
+          "github": "https://github.com/bhaskargurram-ai/agenthallu-bench",
+          "github_stars": 2,
+          "url": "https://arxiv.org/abs/2604.16706",
+          "hf_url": "https://huggingface.co/papers/2604.16706",
+          "hot": false,
+          "score": 23
+        },
+        {
+          "id": "2609.16816",
+          "title": "ImpossibleRubrics: Stress-Testing Generated Rubrics as Reward Signals",
+          "authors": [
+            "Bowen Qin",
+            "Yi Xie",
+            "Yesheng Liu",
+            "Xi Yang"
+          ],
+          "author_count": 4,
+          "summary": "Language model-generated rubrics are increasingly used as reward signals for rubric-based reinforcement learning, LLM-as-a-judge evaluation, and automated grading. Such rubrics are reliable only if they reward honest answers over adversarial answers optimized to exploit them. Yet their robustness to such optimization remains poorly understood. We isolate the hardest regime: impossible tasks, where…",
+          "published": "2026-09-14",
+          "upvotes": 11,
+          "github": "https://github.com/impossiblerubrics/impossible_rubrics",
+          "github_stars": 0,
+          "url": "https://arxiv.org/abs/2609.16816",
+          "hf_url": "https://huggingface.co/papers/2609.16816",
+          "hot": false,
+          "score": 18
+        },
+        {
+          "id": "2601.07506",
+          "title": "Judging Against the Reference: Uncovering Knowledge-Driven Failures in LLM-Judges on QA Evaluation",
+          "authors": [
+            "Dongryeol Lee",
+            "Yerin Hwang",
+            "Taegwan Kang",
+            "Minwoo Lee",
+            "Younhyung Chae"
+          ],
+          "author_count": 6,
+          "summary": "While large language models (LLMs) are increasingly used as automatic judges for question answering (QA) and other reference-conditioned evaluation tasks, little is known about their ability to adhere to a provided reference. We identify a critical failure mode of such reference-based LLM QA evaluation: when the provided reference conflicts with the judge model's parametric knowledge, the resultin…",
+          "published": "2026-01-12",
+          "upvotes": 0,
+          "github": "",
+          "github_stars": 0,
+          "url": "https://arxiv.org/abs/2601.07506",
+          "hf_url": "https://huggingface.co/papers/2601.07506",
+          "hot": false,
+          "score": 17
+        },
+        {
+          "id": "2602.09383",
+          "title": "BiasScope: Towards Automated Detection of Bias in LLM-as-a-Judge Evaluation",
+          "authors": [
+            "Peng Lai",
+            "Zhihao Ou",
+            "Yong Wang",
+            "Longyue Wang",
+            "Jian Yang"
+          ],
+          "author_count": 7,
+          "summary": "LLM-as-a-Judge has been widely adopted across various research and practical applications, yet the robustness and reliability of its evaluation remain a critical issue. A core challenge it faces is bias, which has primarily been studied in terms of known biases and their impact on evaluation outcomes, while automated and systematic exploration of potential unknown biases is still lacking. Neverthe…",
+          "published": "2026-02-09",
+          "upvotes": 1,
+          "github": "",
+          "github_stars": 0,
+          "url": "https://arxiv.org/abs/2602.09383",
+          "hf_url": "https://huggingface.co/papers/2602.09383",
+          "hot": false,
+          "score": 16
+        },
+        {
+          "id": "2606.19704",
+          "title": "Beyond Static Leaderboards: Predictive Validity for the Evaluation of LLM Agents",
+          "authors": [
+            "Dhaval C. Patel",
+            "Kaoutar El Maghraoui",
+            "Shuxin Lin",
+            "Yusheng Li",
+            "Tianjun Feng"
+          ],
+          "author_count": 61,
+          "summary": "Agent benchmarks are growing fast, but no single benchmark touches more than four or five of the dimensions that deployment exposes. This paper aggregates the largest coordinated deep-dive of one MCP-based industrial-agent benchmark to date: fourteen parallel implementation studies covering new asset classes (including a multi-modal visual extension), alternative orchestrations, retrieval strategi…",
+          "published": "2026-06-17",
+          "upvotes": 42,
+          "github": "",
+          "github_stars": 0,
+          "url": "https://arxiv.org/abs/2606.19704",
+          "hf_url": "https://huggingface.co/papers/2606.19704",
+          "hot": false,
+          "score": 15
+        },
+        {
+          "id": "2606.20950",
+          "title": "Power Systems Agent Benchmark: Executable Evaluation of AI Agents in Electric Power Engineering",
+          "authors": [
+            "Sergei Trashchenkov"
+          ],
+          "author_count": 1,
+          "summary": "Executable evaluation -- checking the consequences of an agent's actions with a program rather than grading its prose -- has become a prominent way to assess tool-using AI agents in software settings. Electric power engineering has not yet had an analogous benchmark: language-model use is still dominated by retrieval and text question answering, while agents acting on power-system artifacts remain…",
+          "published": "2026-07-01",
+          "upvotes": 1,
+          "github": "https://github.com/trashchenkov/power-systems-agent-benchmark",
+          "github_stars": 3,
+          "url": "https://arxiv.org/abs/2606.20950",
+          "hf_url": "https://huggingface.co/papers/2606.20950",
+          "hot": false,
+          "score": 15
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "title": "Agent skills, tools, and action",
+      "blurb": "What an agent can actually do: reasoning-and-acting loops, tool and function calling, self-correction, and the architectures that turn a model into a system that executes real work.",
+      "curated": [
+        {
+          "id": "2210.03629",
+          "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+          "authors": [
+            "Shunyu Yao",
+            "Jeffrey Zhao",
+            "Dian Yu",
+            "Nan Du",
+            "Izhak Shafran"
+          ],
+          "author_count": 7,
+          "summary": "While large language models (LLMs) have demonstrated impressive capabilities across tasks in language understanding and interactive decision making, their abilities for reasoning (e.g. chain-of-thought prompting) and acting (e.g. action plan generation) have primarily been studied as separate topics. In this paper, we explore the use of LLMs to generate both reasoning traces and task-specific acti…",
+          "published": "2022-10-06",
+          "upvotes": 38,
+          "github": "",
+          "github_stars": 0,
+          "url": "https://arxiv.org/abs/2210.03629",
+          "hf_url": "https://huggingface.co/papers/2210.03629"
+        },
+        {
+          "id": "2302.04761",
+          "title": "Toolformer: Language Models Can Teach Themselves to Use Tools",
+          "authors": [
+            "Timo Schick",
+            "Jane Dwivedi-Yu",
+            "Roberto Dessì",
+            "Roberta Raileanu",
+            "Maria Lomeli"
+          ],
+          "author_count": 8,
+          "summary": "Language models (LMs) exhibit remarkable abilities to solve new tasks from just a few examples or textual instructions, especially at scale. They also, paradoxically, struggle with basic functionality, such as arithmetic or factual lookup, where much simpler and smaller models excel. In this paper, we show that LMs can teach themselves to use external tools via simple APIs and achieve the best of…",
+          "published": "2023-02-09",
+          "upvotes": 12,
+          "github": "",
+          "github_stars": 0,
+          "url": "https://arxiv.org/abs/2302.04761",
+          "hf_url": "https://huggingface.co/papers/2302.04761"
+        },
+        {
+          "id": "2303.11366",
+          "title": "Reflexion: Language Agents with Verbal Reinforcement Learning",
+          "authors": [
+            "Noah Shinn",
+            "Federico Cassano",
+            "Beck Labash",
+            "Ashwin Gopinath",
+            "Karthik Narasimhan"
+          ],
+          "author_count": 6,
+          "summary": "Large language models (LLMs) have been increasingly used to interact with external environments (e.g., games, compilers, APIs) as goal-driven agents. However, it remains challenging for these language agents to quickly and efficiently learn from trial-and-error as traditional reinforcement learning methods require extensive training samples and expensive model fine-tuning. We propose Reflexion, a…",
+          "published": "2023-03-20",
+          "upvotes": 9,
+          "github": "",
+          "github_stars": 0,
+          "url": "https://arxiv.org/abs/2303.11366",
+          "hf_url": "https://huggingface.co/papers/2303.11366"
+        },
+        {
+          "id": "2308.08155",
+          "title": "AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation Framework",
+          "authors": [
+            "Qingyun Wu",
+            "Gagan Bansal",
+            "Jieyu Zhang",
+            "Yiran Wu",
+            "Shaokun Zhang"
+          ],
+          "author_count": 10,
+          "summary": "This technical report presents AutoGen, a new framework that enables development of LLM applications using multiple agents that can converse with each other to solve tasks. AutoGen agents are customizable, conversable, and seamlessly allow human participation. They can operate in various modes that employ combinations of LLMs, human inputs, and tools. AutoGen's design offers multiple advantages: a…",
+          "published": "2023-08-16",
+          "upvotes": 11,
+          "github": "https://github.com/cmbagent/cmbagent",
+          "github_stars": 0,
+          "url": "https://arxiv.org/abs/2308.08155",
+          "hf_url": "https://huggingface.co/papers/2308.08155"
+        }
+      ],
+      "recent": [
+        {
+          "id": "2412.20145",
+          "title": "Efficient Multi-Agent Collaboration with Tool Use for Online Planning in Complex Table Question Answering",
+          "authors": [
+            "Wei Zhou",
+            "Mohsen Mesgar",
+            "Annemarie Friedrich",
+            "Heike Adel"
+          ],
+          "author_count": 4,
+          "summary": "Complex table question answering (TQA) aims to answer questions that require complex reasoning, such as multi-step or multi-category reasoning, over data represented in tabular form. Previous approaches demonstrated notable performance by leveraging either closed-source large language models (LLMs) or fine-tuned open-weight LLMs. However, fine-tuning LLMs requires high-quality training data, which…",
+          "published": "2024-12-28",
+          "upvotes": 0,
+          "github": "",
+          "github_stars": 0,
+          "url": "https://arxiv.org/abs/2412.20145",
+          "hf_url": "https://huggingface.co/papers/2412.20145",
+          "hot": false,
+          "score": 24
+        },
+        {
+          "id": "2606.01533",
+          "title": "Multi-Agent Computer Use",
+          "authors": [
+            "Jing Yu Koh",
+            "Ruslan Salakhutdinov",
+            "Daniel Fried"
+          ],
+          "author_count": 3,
+          "summary": "Computer use agents (CUAs) today are primarily deployed as single serial agents. This setup is suboptimal for complex long-horizon tasks that benefit from task decomposition, parallel execution, and consistent re-planning based on new information. In this paper, we argue that we should instead move towards evaluating and building multi-agent computer use (MACU) systems. These systems, which emphas…",
+          "published": "2026-05-31",
+          "upvotes": 6,
+          "github": "",
+          "github_stars": 0,
+          "url": "https://arxiv.org/abs/2606.01533",
+          "hf_url": "https://huggingface.co/papers/2606.01533",
+          "hot": false,
+          "score": 21
+        },
+        {
+          "id": "2606.22388",
+          "title": "PlanBench-XL: Evaluating Long-Horizon Planning of LLM Tool-Use Agents in Large-Scale Tool Ecosystems",
+          "authors": [
+            "Jiayu Liu",
+            "Qihan Lin",
+            "Cheng Qian",
+            "Rui Wang",
+            "Emre Can Acikgoz"
+          ],
+          "author_count": 11,
+          "summary": "LLM agents increasingly operate in large tool ecosystems, where real-world tasks require discovering relevant tools, inferring implicit sub-goals, and adapting to dynamic environments over long horizons. However, existing benchmarks rarely evaluate planning under retrieval-limited tool visibility. To address this gap, we introduce PlanBench-XL, an interactive benchmark of 327 retail tasks over 1,6…",
+          "published": "2026-06-20",
+          "upvotes": 96,
+          "github": "https://github.com/JiayuJeff/PlanBench-XL",
+          "github_stars": 40,
+          "url": "https://arxiv.org/abs/2606.22388",
+          "hf_url": "https://huggingface.co/papers/2606.22388",
+          "hot": false,
+          "score": 18
+        },
+        {
+          "id": "2605.12481",
+          "title": "ToolCUA: Towards Optimal GUI-Tool Path Orchestration for Computer Use Agents",
+          "authors": [
+            "Xuhao Hu",
+            "Xi Zhang",
+            "Haiyang Xu",
+            "Kyle Qiao",
+            "Jingyi Yang"
+          ],
+          "author_count": 9,
+          "summary": "Computer Use Agents (CUAs) can act through both atomic GUI actions, such as click and type, and high-level tool calls, such as API-based file operations, but this hybrid action space often leaves them uncertain about when to continue with GUI actions or switch to tools, leading to suboptimal execution paths. This difficulty stems from the scarcity of high-quality interleaved GUI-Tool trajectories,…",
+          "published": "2026-05-11",
+          "upvotes": 26,
+          "github": "https://github.com/X-PLUG/ToolCUA",
+          "github_stars": 62,
+          "url": "https://arxiv.org/abs/2605.12481",
+          "hf_url": "https://huggingface.co/papers/2605.12481",
+          "hot": false,
+          "score": 18
+        },
+        {
+          "id": "2511.02734",
+          "title": "CostBench: Evaluating Multi-Turn Cost-Optimal Planning and Adaptation in Dynamic Environments for LLM Tool-Use Agents",
+          "authors": [
+            "Jiayu Liu",
+            "Cheng Qian",
+            "Zhaochen Su",
+            "Qing Zong",
+            "Shijue Huang"
+          ],
+          "author_count": 7,
+          "summary": "Current evaluations of Large Language Model (LLM) agents primarily emphasize task completion, often overlooking resource efficiency and adaptability. This neglects a crucial capability: agents' ability to devise and adjust cost-optimal plans in response to changing environments. To bridge this gap, we introduce CostBench, a scalable, cost-centric benchmark designed to evaluate agents' economic rea…",
+          "published": "2025-11-04",
+          "upvotes": 23,
+          "github": "https://github.com/JiayuJeff/CostBench",
+          "github_stars": 35,
+          "url": "https://arxiv.org/abs/2511.02734",
+          "hf_url": "https://huggingface.co/papers/2511.02734",
+          "hot": false,
+          "score": 18
+        },
+        {
+          "id": "2605.02801",
+          "title": "Reinforcement Learning for LLM-based Multi-Agent Systems through Orchestration Traces",
+          "authors": [
+            "Chenchen Zhang"
+          ],
+          "author_count": 1,
+          "summary": "As large language model (LLM) agents evolve from isolated tool users into coordinated teams, reinforcement learning (RL) must optimize not only individual actions but also how work is spawned, delegated, communicated, aggregated, and stopped. This paper studies RL for LLM-based multi-agent systems through orchestration traces: temporal interaction graphs whose events include sub-agent spawning, de…",
+          "published": "2026-05-03",
+          "upvotes": 8,
+          "github": "https://github.com/xxzcc/awesome-llm-mas-rl",
+          "github_stars": 24,
+          "url": "https://arxiv.org/abs/2605.02801",
+          "hf_url": "https://huggingface.co/papers/2605.02801",
+          "hot": false,
+          "score": 18
+        }
+      ]
+    },
+    {
+      "id": "prompting",
+      "title": "Prompt and context engineering",
+      "blurb": "How the request and its surrounding context shape behavior: structured reasoning, decomposition, retrieval, long-context effects, and how sensitive results are to the way a task is phrased.",
+      "curated": [
+        {
+          "id": "2201.11903",
+          "title": "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
+          "authors": [
+            "Jason Wei",
+            "Xuezhi Wang",
+            "Dale Schuurmans",
+            "Maarten Bosma",
+            "Brian Ichter"
+          ],
+          "author_count": 9,
+          "summary": "We explore how generating a chain of thought -- a series of intermediate reasoning steps -- significantly improves the ability of large language models to perform complex reasoning. In particular, we show how such reasoning abilities emerge naturally in sufficiently large language models via a simple method called chain of thought prompting, where a few chain of thought demonstrations are provided…",
+          "published": "2022-01-28",
+          "upvotes": 16,
+          "github": "",
+          "github_stars": 0,
+          "url": "https://arxiv.org/abs/2201.11903",
+          "hf_url": "https://huggingface.co/papers/2201.11903"
+        },
+        {
+          "id": "2005.11401",
+          "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+          "authors": [
+            "Patrick Lewis",
+            "Ethan Perez",
+            "Aleksandra Piktus",
+            "Fabio Petroni",
+            "Vladimir Karpukhin"
+          ],
+          "author_count": 12,
+          "summary": "Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for…",
+          "published": "2020-05-22",
+          "upvotes": 15,
+          "github": "",
+          "github_stars": 0,
+          "url": "https://arxiv.org/abs/2005.11401",
+          "hf_url": "https://huggingface.co/papers/2005.11401"
+        },
+        {
+          "id": "2307.03172",
+          "title": "Lost in the Middle: How Language Models Use Long Contexts",
+          "authors": [
+            "Nelson F. Liu",
+            "Kevin Lin",
+            "John Hewitt",
+            "Ashwin Paranjape",
+            "Michele Bevilacqua"
+          ],
+          "author_count": 7,
+          "summary": "While recent language models have the ability to take long contexts as input, relatively little is known about how well the language models use longer context. We analyze language model performance on two tasks that require identifying relevant information within their input contexts: multi-document question answering and key-value retrieval. We find that performance is often highest when relevant…",
+          "published": "2023-07-06",
+          "upvotes": 44,
+          "github": "https://github.com/nelson-liu/lost-in-the-middle",
+          "github_stars": 394,
+          "url": "https://arxiv.org/abs/2307.03172",
+          "hf_url": "https://huggingface.co/papers/2307.03172"
+        },
+        {
+          "id": "2203.11171",
+          "title": "Self-Consistency Improves Chain of Thought Reasoning in Language Models",
+          "authors": [
+            "Xuezhi Wang",
+            "Jason Wei",
+            "Dale Schuurmans",
+            "Quoc Le",
+            "Ed Chi"
+          ],
+          "author_count": 8,
+          "summary": "Chain-of-thought prompting combined with pre-trained large language models has achieved encouraging results on complex reasoning tasks. In this paper, we propose a new decoding strategy, self-consistency, to replace the naive greedy decoding used in chain-of-thought prompting. It first samples a diverse set of reasoning paths instead of only taking the greedy one, and then selects the most consist…",
+          "published": "2022-03-21",
+          "upvotes": 6,
+          "github": "",
+          "github_stars": 0,
+          "url": "https://arxiv.org/abs/2203.11171",
+          "hf_url": "https://huggingface.co/papers/2203.11171"
+        }
+      ],
+      "recent": [
+        {
+          "id": "2402.10200",
+          "title": "Chain-of-Thought Reasoning Without Prompting",
+          "authors": [
+            "Xuezhi Wang",
+            "Denny Zhou"
+          ],
+          "author_count": 2,
+          "summary": "In enhancing the reasoning capabilities of large language models (LLMs), prior research primarily focuses on specific prompting techniques such as few-shot or zero-shot chain-of-thought (CoT) prompting. These methods, while effective, often involve manually intensive prompt engineering. Our study takes a novel approach by asking: Can LLMs reason effectively without prompting? Our findings reveal t…",
+          "published": "2024-02-15",
+          "upvotes": 111,
+          "github": "",
+          "github_stars": 0,
+          "url": "https://arxiv.org/abs/2402.10200",
+          "hf_url": "https://huggingface.co/papers/2402.10200",
+          "hot": false,
+          "score": 23
+        },
+        {
+          "id": "2501.08248",
+          "title": "Eliciting In-context Retrieval and Reasoning for Long-context Large Language Models",
+          "authors": [
+            "Yifu Qiu",
+            "Varun Embar",
+            "Yizhe Zhang",
+            "Navdeep Jaitly",
+            "Shay B. Cohen"
+          ],
+          "author_count": 6,
+          "summary": "Recent advancements in long-context language models (LCLMs) promise to transform Retrieval-Augmented Generation (RAG) by simplifying pipelines. With their expanded context windows, LCLMs can process entire knowledge bases and perform retrieval and reasoning directly -- a capability we define as In-Context Retrieval and Reasoning (ICR^2). However, existing benchmarks like LOFT often overestimate LC…",
+          "published": "2025-01-14",
+          "upvotes": 2,
+          "github": "",
+          "github_stars": 0,
+          "url": "https://arxiv.org/abs/2501.08248",
+          "hf_url": "https://huggingface.co/papers/2501.08248",
+          "hot": false,
+          "score": 21
+        },
+        {
+          "id": "2508.01191",
+          "title": "Is Chain-of-Thought Reasoning of LLMs a Mirage? A Data Distribution Lens",
+          "authors": [
+            "Chengshuai Zhao",
+            "Zhen Tan",
+            "Pingchuan Ma",
+            "Dawei Li",
+            "Bohan Jiang"
+          ],
+          "author_count": 8,
+          "summary": "Chain-of-Thought (CoT) prompting has been shown to improve Large Language Model (LLM) performance on various tasks. With this approach, LLMs appear to produce human-like reasoning steps before providing answers (a.k.a., CoT reasoning), which often leads to the perception that they engage in deliberate inferential processes. However, some initial findings suggest that CoT reasoning may be more supe…",
+          "published": "2025-08-02",
+          "upvotes": 240,
+          "github": "https://github.com/ChengshuaiZhao0/DataAlchemy",
+          "github_stars": 129,
+          "url": "https://arxiv.org/abs/2508.01191",
+          "hf_url": "https://huggingface.co/papers/2508.01191",
+          "hot": false,
+          "score": 20
+        },
+        {
+          "id": "2306.03799",
+          "title": "Prompt Space Optimizing Few-shot Reasoning Success with Large Language Models",
+          "authors": [
+            "Fobo Shi",
+            "Peijun Qing",
+            "Dong Yang",
+            "Nan Wang",
+            "Youbo Lei"
+          ],
+          "author_count": 7,
+          "summary": "Prompt engineering is an essential technique for enhancing the abilities of large language models (LLMs) by providing explicit and specific instructions. It enables LLMs to excel in various tasks, such as arithmetic reasoning, question answering, summarization, relation extraction, machine translation, and sentiment analysis. Researchers have been actively exploring different prompt engineering st…",
+          "published": "2023-06-06",
+          "upvotes": 1,
+          "github": "https://github.com/youblei/prompt-space",
+          "github_stars": 2,
+          "url": "https://arxiv.org/abs/2306.03799",
+          "hf_url": "https://huggingface.co/papers/2306.03799",
+          "hot": false,
+          "score": 20
+        },
+        {
+          "id": "2310.14799",
+          "title": "Cross-lingual Prompting: Improving Zero-shot Chain-of-Thought Reasoning across Languages",
+          "authors": [
+            "Libo Qin",
+            "Qiguang Chen",
+            "Fuxuan Wei",
+            "Shijue Huang",
+            "Wanxiang Che"
+          ],
+          "author_count": 5,
+          "summary": "Chain-of-thought (CoT) is capable of eliciting models to explicitly generate reasoning paths, thus promoting reasoning accuracy and attracting increasing attention. Specifically, zero-shot CoT achieves remarkable improvements in a wide range of reasoning tasks by simply instructing the LLM with the prompt \"Let's think step by step!\". Despite the success of zero-shot CoT, the existing zero-shot pro…",
+          "published": "2023-10-23",
+          "upvotes": 0,
+          "github": "https://github.com/lightchen233/cross-lingual-prompting",
+          "github_stars": 7,
+          "url": "https://arxiv.org/abs/2310.14799",
+          "hf_url": "https://huggingface.co/papers/2310.14799",
+          "hot": false,
+          "score": 20
+        },
+        {
+          "id": "2312.04684",
+          "title": "LaRS: Latent Reasoning Skills for Chain-of-Thought Reasoning",
+          "authors": [
+            "Zifan Xu",
+            "Haozhu Wang",
+            "Dmitriy Bespalov",
+            "Xian Wu",
+            "Peter Stone"
+          ],
+          "author_count": 6,
+          "summary": "Chain-of-thought (CoT) prompting is a popular in-context learning (ICL) approach for large language models (LLMs), especially when tackling complex reasoning tasks. Traditional ICL approaches construct prompts using examples that contain questions similar to the input question. However, CoT prompting, which includes crucial intermediate reasoning steps (rationales) within its examples, necessitate…",
+          "published": "2023-12-07",
+          "upvotes": 0,
+          "github": "",
+          "github_stars": 0,
+          "url": "https://arxiv.org/abs/2312.04684",
+          "hf_url": "https://huggingface.co/papers/2312.04684",
+          "hot": false,
+          "score": 19
+        }
+      ]
+    },
+    {
+      "id": "experimentation",
+      "title": "Experimentation, safety, and rollout",
+      "blurb": "Moving from a promising prototype to a change that is defensible in production: online experiments, alignment and guardrails, reward hacking, and the risks that only appear once real users are exposed.",
+      "curated": [
+        {
+          "id": "2212.08073",
+          "title": "Constitutional AI: Harmlessness from AI Feedback",
+          "authors": [
+            "Yuntao Bai",
+            "Saurav Kadavath",
+            "Sandipan Kundu",
+            "Amanda Askell",
+            "Jackson Kernion"
+          ],
+          "author_count": 51,
+          "summary": "As AI systems become more capable, we would like to enlist their help to supervise other AIs. We experiment with methods for training a harmless AI assistant through self-improvement, without any human labels identifying harmful outputs. The only human oversight is provided through a list of rules or principles, and so we refer to the method as 'Constitutional AI'. The process involves both a supe…",
+          "published": "2022-12-15",
+          "upvotes": 4,
+          "github": "",
+          "github_stars": 0,
+          "url": "https://arxiv.org/abs/2212.08073",
+          "hf_url": "https://huggingface.co/papers/2212.08073"
+        },
+        {
+          "id": "2203.02155",
+          "title": "Training language models to follow instructions with human feedback",
+          "authors": [
+            "Long Ouyang",
+            "Jeff Wu",
+            "Xu Jiang",
+            "Diogo Almeida",
+            "Carroll L. Wainwright"
+          ],
+          "author_count": 20,
+          "summary": "Making language models bigger does not inherently make them better at following a user's intent. For example, large language models can generate outputs that are untruthful, toxic, or simply not helpful to the user. In other words, these models are not aligned with their users. In this paper, we show an avenue for aligning language models with user intent on a wide range of tasks by fine-tuning wi…",
+          "published": "2022-03-04",
+          "upvotes": 26,
+          "github": "https://github.com/openai/following-instructions-human-feedback",
+          "github_stars": 1256,
+          "url": "https://arxiv.org/abs/2203.02155",
+          "hf_url": "https://huggingface.co/papers/2203.02155"
+        },
+        {
+          "id": "2209.13085",
+          "title": "Defining and Characterizing Reward Hacking",
+          "authors": [
+            "Joar Skalse",
+            "Nikolaus H. R. Howe",
+            "Dmitrii Krasheninnikov",
+            "David Krueger"
+          ],
+          "author_count": 4,
+          "summary": "We provide the first formal definition of reward hacking, a phenomenon where optimizing an imperfect proxy reward function leads to poor performance according to the true reward function. We say that a proxy is unhackable if increasing the expected proxy return can never decrease the expected true return. Intuitively, it might be possible to create an unhackable proxy by leaving some terms out of…",
+          "published": "2022-09-27",
+          "upvotes": 0,
+          "github": "",
+          "github_stars": 0,
+          "url": "https://arxiv.org/abs/2209.13085",
+          "hf_url": "https://huggingface.co/papers/2209.13085"
+        }
+      ],
+      "recent": [
+        {
+          "id": "2501.09620",
+          "title": "Beyond Reward Hacking: Causal Rewards for Large Language Model Alignment",
+          "authors": [
+            "Chaoqi Wang",
+            "Zhuokai Zhao",
+            "Yibo Jiang",
+            "Zhaorun Chen",
+            "Chen Zhu"
+          ],
+          "author_count": 11,
+          "summary": "Recent advances in large language models (LLMs) have demonstrated significant progress in performing complex tasks. While Reinforcement Learning from Human Feedback (RLHF) has been effective in aligning LLMs with human preferences, it is susceptible to spurious correlations in reward modeling. Consequently, it often introduces biases-such as length bias, sycophancy, conceptual bias, and discrimina…",
+          "published": "2025-01-16",
+          "upvotes": 0,
+          "github": "",
+          "github_stars": 0,
+          "url": "https://arxiv.org/abs/2501.09620",
+          "hf_url": "https://huggingface.co/papers/2501.09620",
+          "hot": false,
+          "score": 22
+        },
+        {
+          "id": "2511.18397",
+          "title": "Natural Emergent Misalignment from Reward Hacking in Production RL",
+          "authors": [
+            "Monte MacDiarmid",
+            "Benjamin Wright",
+            "Jonathan Uesato",
+            "Joe Benton",
+            "Jon Kutasov"
+          ],
+          "author_count": 22,
+          "summary": "We show that when large language models learn to reward hack on production RL environments, this can result in egregious emergent misalignment. We start with a pretrained model, impart knowledge of reward hacking strategies via synthetic document finetuning or prompting, and train on a selection of real Anthropic production coding environments. Unsurprisingly, the model learns to reward hack. Surp…",
+          "published": "2025-11-23",
+          "upvotes": 2,
+          "github": "",
+          "github_stars": 0,
+          "url": "https://arxiv.org/abs/2511.18397",
+          "hf_url": "https://huggingface.co/papers/2511.18397",
+          "hot": false,
+          "score": 20
+        },
+        {
+          "id": "2604.13602",
+          "title": "Reward Hacking in the Era of Large Models: Mechanisms, Emergent Misalignment, Challenges",
+          "authors": [
+            "Xiaohua Wang",
+            "Muzhao Tian",
+            "Yuqi Zeng",
+            "Zisu Huang",
+            "Jiakang Yuan"
+          ],
+          "author_count": 23,
+          "summary": "Reinforcement Learning from Human Feedback (RLHF) and related alignment paradigms have become central to steering large language models (LLMs) and multimodal large language models (MLLMs) toward human-preferred behaviors. However, these approaches introduce a systemic vulnerability: reward hacking, where models exploit imperfections in learned reward signals to maximize proxy objectives without fu…",
+          "published": "2026-04-14",
+          "upvotes": 31,
+          "github": "https://github.com/xhwang22/Awesome-Reward-Hacking",
+          "github_stars": 53,
+          "url": "https://arxiv.org/abs/2604.13602",
+          "hf_url": "https://huggingface.co/papers/2604.13602",
+          "hot": false,
+          "score": 16
+        },
+        {
+          "id": "2605.25189",
+          "title": "Directional Alignment Mitigates Reward Hacking in Reinforcement Learning for Language Models",
+          "authors": [
+            "Wenlong Deng",
+            "Jiaji Huang",
+            "Kaan Ozkara",
+            "Yushu Li",
+            "Christos Thrampoulidis"
+          ],
+          "author_count": 7,
+          "summary": "Reward hacking arises when a model improves a proxy reward by exploiting shortcuts rather than solving the intended task. We study this failure mode through the geometry of reinforcement learning updates in language models and argue that hacking emerges when optimization drifts away from a stable low-dimensional learning trajectory. We analyze this drift through dominant singular directions of par…",
+          "published": "2026-05-23",
+          "upvotes": 1,
+          "github": "",
+          "github_stars": 0,
+          "url": "https://arxiv.org/abs/2605.25189",
+          "hf_url": "https://huggingface.co/papers/2605.25189",
+          "hot": false,
+          "score": 16
+        },
+        {
+          "id": "2412.09544",
+          "title": "Sail into the Headwind: Alignment via Robust Rewards and Dynamic Labels against Reward Hacking",
+          "authors": [
+            "Paria Rashidinejad",
+            "Yuandong Tian"
+          ],
+          "author_count": 2,
+          "summary": "Aligning AI systems with human preferences typically suffers from the infamous reward hacking problem, where optimization of an imperfect reward model leads to undesired behaviors. In this paper, we investigate reward hacking in offline preference optimization, which aims to improve an initial model using a preference dataset. We identify two types of reward hacking stemming from statistical fluct…",
+          "published": "2024-12-12",
+          "upvotes": 0,
+          "github": "",
+          "github_stars": 0,
+          "url": "https://arxiv.org/abs/2412.09544",
+          "hf_url": "https://huggingface.co/papers/2412.09544",
+          "hot": false,
+          "score": 16
+        },
+        {
+          "id": "2512.02711",
+          "title": "CREST: Universal Safety Guardrails Through Cluster-Guided Cross-Lingual Transfer",
+          "authors": [
+            "Lavish Bansal",
+            "Naman Mishra"
+          ],
+          "author_count": 2,
+          "summary": "Ensuring content safety in large language models (LLMs) is essential for their deployment in real-world applications. However, existing safety guardrails are predominantly tailored for high-resource languages, leaving a significant portion of the world's population underrepresented who communicate in low-resource languages. To address this, we introduce CREST (CRoss-lingual Efficient Safety Transf…",
+          "published": "2025-12-02",
+          "upvotes": 0,
+          "github": "",
+          "github_stars": 0,
+          "url": "https://arxiv.org/abs/2512.02711",
+          "hf_url": "https://huggingface.co/papers/2512.02711",
+          "hot": false,
+          "score": 15
+        }
+      ]
+    }
+  ],
+  "essays": [
+    {
+      "title": "The Proxy Trap",
+      "author": "Milad Shokouhi",
+      "venue": "LinkedIn",
+      "url": "https://www.linkedin.com/pulse/proxy-trap-milad-shokouhi-xtfae/",
+      "track": "evaluation",
+      "note": "Argues that metric science has made real progress on proxy gaming and proxy quality, while two other traps stay comparatively underexamined: an aggregation trap, where an average hides consequential differences beneath it, and an optimization trap, where the measurement system quietly constrains which product changes get considered at all. The concern sharpens as agents automate the optimization loop, because it becomes possible to climb a hill very efficiently without asking whether it is the right hill."
+    },
+    {
+      "title": "Changing How We Build",
+      "author": "Charles Lamanna",
+      "venue": "LinkedIn",
+      "url": "https://www.linkedin.com/pulse/changing-how-we-build-charles-lamanna-xpitc/",
+      "track": "experimentation",
+      "note": "A first-hand account of reorganizing engineering work around agentic coding. The durable point for evaluation: the bottleneck moves rather than disappears, landing on deciding what matters and verifying whether what was built is genuinely good. It also resists inventing AI-specific KPIs, arguing that counting inputs such as lines of code says almost nothing, and that the outcome metrics that mattered before AI remain the right test."
+    }
+  ]
+}

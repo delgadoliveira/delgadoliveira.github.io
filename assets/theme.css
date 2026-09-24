@@ -1,0 +1,154 @@
+/* ============================================================================
+   Shared theme for delgadoliveira.github.io
+   ----------------------------------------------------------------------------
+   Single source of truth for palette and typography. Every page links this
+   before its own page-specific rules, so a restyle happens in one place.
+
+   Visual direction: printed journal rather than product marketing. Paper
+   stock, ink-dark text, a serif display face, hairline rules, and one
+   restrained accent reserved for links and data.
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* Paper and ink */
+  --cp-bg: #efeee8;
+  --cp-bg-elevated: #f6f5f0;
+  --cp-surface: #fcfbf8;
+  --cp-surface-soft: #e8e6de;
+  --cp-border: #d4d1c6;
+  --cp-border-strong: #9b978a;
+  --cp-text: #14161a;
+  --cp-text-muted: #474c54;
+  --cp-text-soft: #6c7178;
+
+  /* Single accent: deep petrol blue, used for links and emphasis only */
+  --cp-accent: #12506b;
+  --cp-accent-hover: #0d3d52;
+  --cp-accent-soft: rgba(18, 80, 107, 0.08);
+  --cp-accent-fg: #fcfbf8;
+  --cp-link: #12506b;
+
+  /* Semantic, desaturated to sit alongside ink rather than shout */
+  --cp-success: #1f6f43;
+  --cp-danger: #a32424;
+  --cp-warning: #8a6100;
+
+  --cp-shadow: 0 1px 2px rgba(20, 22, 26, 0.06);
+  --cp-overlay: rgba(239, 238, 232, 0.86);
+  --cp-panel: rgba(252, 251, 248, 0.9);
+  --cp-panel-strong: rgba(252, 251, 248, 0.97);
+  --cp-sheen: rgba(255, 255, 255, 0.5);
+  --cp-highlight: rgba(18, 80, 107, 0.1);
+
+  --cp-font-display: "Iowan Old Style", "Palatino Linotype", Palatino,
+    "Book Antiqua", Georgia, "Times New Roman", serif;
+  --cp-font-body: "Segoe UI", Aptos, Calibri, -apple-system,
+    BlinkMacSystemFont, sans-serif;
+  --cp-font-mono: Consolas, "Cascadia Mono", "Courier New", Courier, monospace;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  --cp-bg: #15181c;
+  --cp-bg-elevated: #1a1e23;
+  --cp-surface: #1e2329;
+  --cp-surface-soft: #252b32;
+  --cp-border: #343b43;
+  --cp-border-strong: #4e565f;
+  --cp-text: #e9e7e1;
+  --cp-text-muted: #a8adb4;
+  --cp-text-soft: #868c94;
+
+  --cp-accent: #7ab8d4;
+  --cp-accent-hover: #96c8de;
+  --cp-accent-soft: rgba(122, 184, 212, 0.12);
+  --cp-accent-fg: #14161a;
+  --cp-link: #7ab8d4;
+
+  --cp-success: #5fbc85;
+  --cp-danger: #e07a7a;
+  --cp-warning: #d6a545;
+
+  --cp-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --cp-overlay: rgba(21, 24, 28, 0.88);
+  --cp-panel: rgba(30, 35, 41, 0.78);
+  --cp-panel-strong: rgba(30, 35, 41, 0.97);
+  --cp-sheen: rgba(255, 255, 255, 0.03);
+  --cp-highlight: rgba(122, 184, 212, 0.12);
+}
+
+/* ---------------------------------------------------------------------------
+   Typography. Selectors are intentionally prefixed with `html` so they win
+   against the plain element rules inside each page's own <style> block,
+   regardless of source order.
+   ------------------------------------------------------------------------ */
+
+html body {
+  font-family: var(--cp-font-body);
+}
+
+html h1,
+html h2,
+html h3,
+html .brand {
+  font-family: var(--cp-font-display);
+  font-weight: 600;
+  letter-spacing: -0.012em;
+}
+
+html h1 {
+  line-height: 1.06;
+}
+
+/* Mono is reserved for labels, identifiers, and numbers. */
+html .kicker,
+html .section-number,
+html .layer-number,
+html .track-num,
+html .item-meta,
+html .meta,
+html .sub,
+html .status,
+html .badge,
+html .project-meta,
+html .writing-meta,
+html .writing-type,
+html .card-kicker,
+html .verdict b,
+html .call,
+html .control .value,
+html .stat-row span:last-child {
+  font-family: var(--cp-font-mono);
+}
+
+/* Hairline rules read as typographic, not as UI chrome. */
+html hr,
+html .rule {
+  border: none;
+  border-top: 1px solid var(--cp-border);
+  margin: 40px 0;
+}
+
+html a {
+  color: var(--cp-link);
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+}
+
+html :focus-visible {
+  outline: 2px solid var(--cp-accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html *,
+  html *::before,
+  html *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

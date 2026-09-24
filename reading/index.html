@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A working reading list on agent evaluation, agent skills and tool use, prompt and context engineering, and experimentation. Curated foundations plus an automatically refreshed view of recent work.">
+  <link rel="canonical" href="https://delgadoliveira.github.io/reading/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Reading — Alan Delgado">
+  <meta property="og:description" content="Curated foundations and recent work on agent evaluation, skills, prompting, and experimentation.">
+  <title>Reading — Alan Delgado</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("clawpilotTheme");
+      const stored = localStorage.getItem("portfolio-theme");
+      const theme =
+        param || stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <link rel="stylesheet" href="/assets/theme.css">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--cp-bg);
+      color: var(--cp-text);
+      font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.72;
+    }
+    a { color: var(--cp-link); }
+    .shell { width: min(880px, calc(100% - 40px)); margin: 0 auto; }
+    header {
+      border-bottom: 1px solid var(--cp-border);
+      background: var(--cp-overlay);
+      backdrop-filter: blur(16px);
+    }
+    nav {
+      width: min(980px, calc(100% - 40px));
+      min-height: 68px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand { color: var(--cp-text); font-weight: 800; text-decoration: none; }
+    .brand span { color: var(--cp-accent); }
+    .nav-actions { display: flex; align-items: center; gap: 16px; }
+    .nav-actions a { color: var(--cp-text-muted); font-size: 0.9rem; font-weight: 700; text-decoration: none; }
+    .theme-btn {
+      width: 40px; height: 40px;
+      border: 1px solid var(--cp-border);
+      border-radius: 0.625rem;
+      background: var(--cp-surface);
+      color: var(--cp-text);
+      cursor: pointer;
+    }
+    main { padding: 72px 0 96px; }
+    .kicker {
+      color: var(--cp-accent);
+      font-family: Consolas, "Courier New", Courier, monospace;
+      font-size: 0.78rem; font-weight: 800;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    h1 {
+      margin: 18px 0 24px;
+      font-size: clamp(2.4rem, 6.5vw, 4.2rem);
+      line-height: 1.02; letter-spacing: -0.05em;
+    }
+    .dek { color: var(--cp-text-muted); font-size: 1.15rem; line-height: 1.58; max-width: 64ch; }
+    p, li { color: var(--cp-text-muted); }
+    strong { color: var(--cp-text); }
+    .track { margin-top: 64px; padding-top: 28px; border-top: 1px solid var(--cp-border); }
+    .track-num {
+      color: var(--cp-accent);
+      font-family: Consolas, "Courier New", Courier, monospace;
+      font-size: 0.74rem; font-weight: 800; letter-spacing: 0.08em;
+    }
+    .track h2 { margin: 8px 0 8px; font-size: 1.75rem; line-height: 1.16; letter-spacing: -0.03em; }
+    .track-blurb { max-width: 64ch; margin: 0 0 28px; }
+    .sub {
+      margin: 30px 0 12px;
+      font-family: Consolas, "Courier New", Courier, monospace;
+      font-size: 0.74rem; font-weight: 800;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--cp-text-soft);
+    }
+    .item { padding: 16px 0; border-top: 1px solid var(--cp-border); }
+    .item:first-of-type { border-top: none; }
+    .item-title { margin: 0 0 4px; font-size: 1.02rem; font-weight: 700; line-height: 1.35; }
+    .item-title a { color: var(--cp-text); text-decoration: none; }
+    .item-title a:hover { color: var(--cp-accent); }
+    .item-meta {
+      display: flex; flex-wrap: wrap; gap: 8px 14px;
+      font-family: Consolas, "Courier New", Courier, monospace;
+      font-size: 0.74rem; color: var(--cp-text-soft);
+      margin-bottom: 6px;
+    }
+    .item-summary { margin: 0; font-size: 0.92rem; line-height: 1.6; }
+    .badge {
+      border: 1px solid var(--cp-border);
+      border-radius: 0.3rem;
+      padding: 0 6px;
+      color: var(--cp-text-soft);
+    }
+    .badge.up { border-color: var(--cp-accent); color: var(--cp-accent); }
+    .note-box {
+      margin: 14px 0 0;
+      padding: 16px 18px;
+      border-left: 3px solid var(--cp-accent);
+      background: var(--cp-accent-soft);
+      border-radius: 0 0.625rem 0.625rem 0;
+    }
+    .note-box p { margin: 0; color: var(--cp-text); font-size: 0.94rem; }
+    .method {
+      margin-top: 72px; padding: 26px;
+      border: 1px solid var(--cp-border);
+      border-radius: 0.625rem;
+      background: var(--cp-surface);
+    }
+    .method h2 { margin: 0 0 10px; font-size: 1.25rem; }
+    .status {
+      font-family: Consolas, "Courier New", Courier, monospace;
+      font-size: 0.78rem; color: var(--cp-text-soft);
+    }
+    .disclaimer { color: var(--cp-text-soft); font-size: 0.86rem; margin-top: 28px; }
+    footer { padding: 24px 0; border-top: 1px solid var(--cp-border); color: var(--cp-text-muted); font-size: 0.84rem; }
+    :focus-visible { outline: 3px solid var(--cp-accent); outline-offset: 3px; }
+    @media (max-width: 600px) {
+      .shell, nav { width: min(100% - 24px, 880px); }
+      main { padding-top: 56px; }
+      .nav-actions a:first-child { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav aria-label="Primary navigation">
+      <a class="brand" href="/"><span>A.</span> Delgado</a>
+      <div class="nav-actions">
+        <a href="/explorer/">Explorer</a>
+        <a href="/writing/">Writing</a>
+        <a href="/">Portfolio</a>
+        <button class="theme-btn" id="themeToggle" aria-label="Toggle color theme" aria-pressed="false">◐</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="shell">
+    <p class="kicker">Reading · Agent methodology</p>
+    <h1>Reading list</h1>
+    <p class="dek">
+      Work I return to when thinking about how agentic systems are built and measured, organized into
+      four tracks. Each track pairs a small set of <strong>foundational papers</strong> with an
+      <strong>automatically refreshed view of recent work</strong>, so the list stays current without
+      pretending that everything recent is important.
+    </p>
+
+    <div id="tracks" aria-live="polite">
+      <p class="status" id="loadStatus">Loading reading list…</p>
+    </div>
+
+    <noscript>
+      <p class="status">
+        This page renders from <a href="papers.json">papers.json</a>, which requires JavaScript.
+        The raw data is readable directly at that link.
+      </p>
+    </noscript>
+
+    <section class="method">
+      <h2>How this list is built</h2>
+      <p>
+        The selection logic is deliberately simple and kept in version control at
+        <a href="https://github.com/delgadoliveira/delgadoliveira.github.io/blob/main/scripts/fetch_papers.py" target="_blank" rel="noreferrer">scripts/fetch_papers.py</a>,
+        so the ranking can be inspected rather than taken on trust.
+      </p>
+      <ul>
+        <li><strong>Foundations are hand-picked, metadata is not.</strong> I choose the arXiv identifiers; titles, authors, and abstracts are always fetched from the Hugging Face papers API. Nothing is transcribed by hand, so a citation cannot silently drift from the real paper.</li>
+        <li><strong>Recent work is filtered, not mirrored.</strong> Candidates come from the daily feed plus targeted searches, then pass a keyword model with per-track weights, penalties for off-domain topics, and a minimum score. Most candidates are rejected.</li>
+        <li><strong>Relevance ranks above popularity.</strong> Upvotes break ties; they never drive the ordering. A widely shared paper that does not match the track does not appear.</li>
+        <li><strong>The automated half carries no endorsement.</strong> Foundations reflect a considered judgment. The recent section is a filtered view of what is being published, and inclusion is not a claim that a paper is correct or important.</li>
+      </ul>
+      <p class="status" id="genStamp"></p>
+      <p class="disclaimer">
+        Commentary reflects publicly available material and general methodology only, and represents my
+        own views rather than those of my employer.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">© <span id="year">2026</span> Alan Delgado de Oliveira · <a href="/">Portfolio</a> · <a href="/writing/">Writing</a> · <a href="/explorer/">Explorer</a></div>
+  </footer>
+
+  <script>
+    (() => {
+      "use strict";
+      const $ = (id) => document.getElementById(id);
+
+      const esc = (s) => String(s == null ? "" : s)
+        .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+
+      function authorLine(p) {
+        const names = p.authors || [];
+        if (!names.length) return "";
+        const shown = names.slice(0, 3).map(esc).join(", ");
+        return (p.author_count || names.length) > 3 ? shown + " et al." : shown;
+      }
+
+      function itemHTML(p, opts) {
+        const meta = [];
+        if (p.published) meta.push("<span>" + esc(p.published) + "</span>");
+        const who = authorLine(p);
+        if (who) meta.push("<span>" + who + "</span>");
+        meta.push('<span class="badge">arXiv:' + esc(p.id) + "</span>");
+        if (opts && opts.showUpvotes && p.upvotes > 0) {
+          meta.push('<span class="badge up">▲ ' + esc(p.upvotes) + "</span>");
+        }
+        if (p.github) {
+          meta.push('<span class="badge"><a href="https://github.com/' + esc(p.github) + '" target="_blank" rel="noreferrer">code</a></span>');
+        }
+        return (
+          '<article class="item">' +
+          '<p class="item-title"><a href="' + esc(p.url) + '" target="_blank" rel="noreferrer">' + esc(p.title) + "</a></p>" +
+          '<div class="item-meta">' + meta.join("") + "</div>" +
+          '<p class="item-summary">' + esc(p.summary) + "</p>" +
+          "</article>"
+        );
+      }
+
+      function essayHTML(e) {
+        return (
+          '<article class="item">' +
+          '<p class="item-title"><a href="' + esc(e.url) + '" target="_blank" rel="noreferrer">' + esc(e.title) + "</a></p>" +
+          '<div class="item-meta"><span>' + esc(e.author) + "</span><span>" + esc(e.venue) + "</span></div>" +
+          '<div class="note-box"><p>' + esc(e.note) + "</p></div>" +
+          "</article>"
+        );
+      }
+
+      function render(data) {
+        const essaysByTrack = {};
+        (data.essays || []).forEach((e) => {
+          (essaysByTrack[e.track] = essaysByTrack[e.track] || []).push(e);
+        });
+
+        const html = (data.tracks || []).map((t, i) => {
+          const num = String(i + 1).padStart(2, "0");
+          let out =
+            '<section class="track" id="' + esc(t.id) + '">' +
+            '<span class="track-num">TRACK ' + num + "</span>" +
+            "<h2>" + esc(t.title) + "</h2>" +
+            '<p class="track-blurb">' + esc(t.blurb) + "</p>";
+
+          if (t.curated && t.curated.length) {
+            out += '<p class="sub">Foundations</p>' + t.curated.map((p) => itemHTML(p, { showUpvotes: false })).join("");
+          }
+          const essays = essaysByTrack[t.id] || [];
+          if (essays.length) {
+            out += '<p class="sub">Practitioner commentary</p>' + essays.map(essayHTML).join("");
+          }
+          if (t.recent && t.recent.length) {
+            out += '<p class="sub">Recent — auto-refreshed, unreviewed</p>' +
+              t.recent.map((p) => itemHTML(p, { showUpvotes: true })).join("");
+          }
+          return out + "</section>";
+        }).join("");
+
+        $("tracks").innerHTML = html || '<p class="status">No entries available.</p>';
+
+        if (data.generated) {
+          const d = new Date(data.generated);
+          $("genStamp").textContent =
+            "Recent sections last refreshed " +
+            d.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" }) +
+            " · source: " + (data.source || "arXiv");
+        }
+      }
+
+      fetch("papers.json", { cache: "no-cache" })
+        .then((r) => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+        .then(render)
+        .catch((err) => {
+          $("loadStatus").textContent =
+            "Could not load the reading list (" + err.message + "). The raw data is at papers.json.";
+        });
+
+      const toggle = $("themeToggle");
+      const sync = () => toggle.setAttribute("aria-pressed", document.documentElement.getAttribute("data-theme") === "dark" ? "true" : "false");
+      toggle.addEventListener("click", () => {
+        const next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", next);
+        localStorage.setItem("portfolio-theme", next);
+        sync();
+      });
+      sync();
+      $("year").textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
