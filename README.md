@@ -1,6 +1,6 @@
 # Alan Delgado Portfolio
 
-A dependency-free, responsive portfolio prepared for GitHub Pages.
+A dependency-free, responsive portfolio and writing site prepared for GitHub Pages.
 
 ## Publish as the main GitHub Pages site
 
@@ -13,6 +13,16 @@ A dependency-free, responsive portfolio prepared for GitHub Pages.
 ## Preview locally
 
 Open `index.html` in a browser. No build step or dependencies are required.
+
+## Add a new article
+
+1. Copy `writing/evidence-stack/` to `writing/<new-slug>/`.
+2. Replace the article title, description, publication date, metadata, and body.
+3. Add a card to `writing/index.html` and the homepage writing section.
+4. Add an item to `writing/feed.xml`.
+
+Each article should end with the public-methodology disclaimer and avoid internal product names,
+metrics, thresholds, screenshots, traffic numbers, and unreleased feature details.
 
 ## Content sources
 

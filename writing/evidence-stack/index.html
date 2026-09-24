@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A three-layer evidence stack for evaluating agentic features: offline evaluation, online experiments, and progressive rollout analysis.">
+  <link rel="canonical" href="https://delgadoliveira.github.io/writing/evidence-stack/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="A three-layer evidence stack for agentic features">
+  <meta property="og:description" content="Why offline evaluation, online experiments, and progressive rollout analysis answer different questions.">
+  <meta property="article:published_time" content="2026-09-24">
+  <title>A three-layer evidence stack for agentic features — Alan Delgado</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("clawpilotTheme");
+      const stored = localStorage.getItem("portfolio-theme");
+      const theme =
+        param || stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-bg-elevated: #fcfbf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #16a34a;
+      --cp-danger: #dc2626;
+      --cp-warning: #f59e0b;
+      --cp-link: #0078d4;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      --cp-overlay: rgba(255, 255, 255, 0.8);
+      --cp-panel: rgba(255, 255, 255, 0.86);
+      --cp-panel-strong: rgba(255, 255, 255, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.55);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-bg-elevated: #343231;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #5f5f5f;
+      --cp-text: #dedede;
+      --cp-text-muted: #919191;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #fb7b91;
+      --cp-accent-soft: rgba(253, 142, 161, 0.14);
+      --cp-accent-fg: #1a1a1a;
+      --cp-success: #4ade80;
+      --cp-danger: #f87171;
+      --cp-warning: #fbbf24;
+      --cp-link: #4da6ff;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --cp-overlay: rgba(41, 41, 41, 0.88);
+      --cp-panel: rgba(41, 41, 41, 0.72);
+      --cp-panel-strong: rgba(41, 41, 41, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.04);
+      --cp-highlight: rgba(253, 142, 161, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--cp-bg);
+      color: var(--cp-text);
+      font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.72;
+    }
+    a { color: var(--cp-link); }
+    .shell { width: min(760px, calc(100% - 40px)); margin: 0 auto; }
+    header {
+      border-bottom: 1px solid var(--cp-border);
+      background: var(--cp-overlay);
+      backdrop-filter: blur(16px);
+    }
+    nav {
+      width: min(980px, calc(100% - 40px));
+      min-height: 68px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand { color: var(--cp-text); font-weight: 800; text-decoration: none; }
+    .brand span { color: var(--cp-accent); }
+    .nav-actions { display: flex; align-items: center; gap: 16px; }
+    .nav-actions a { color: var(--cp-text-muted); font-size: 0.9rem; font-weight: 700; text-decoration: none; }
+    button {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--cp-border);
+      border-radius: 0.625rem;
+      background: var(--cp-surface);
+      color: var(--cp-text);
+      cursor: pointer;
+    }
+    article { padding: 88px 0 96px; }
+    .kicker {
+      color: var(--cp-accent);
+      font-family: Consolas, "Courier New", Courier, monospace;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 18px 0 24px;
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+    }
+    .dek { color: var(--cp-text-muted); font-size: 1.2rem; line-height: 1.55; }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 24px 0 56px;
+      color: var(--cp-text-muted);
+      font-family: Consolas, "Courier New", Courier, monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+    }
+    h2 { margin: 52px 0 14px; font-size: 1.9rem; line-height: 1.18; letter-spacing: -0.025em; }
+    h3 { margin: 32px 0 8px; font-size: 1.2rem; }
+    p, li { color: var(--cp-text-muted); }
+    strong { color: var(--cp-text); }
+    blockquote {
+      margin: 32px 0;
+      padding: 20px 24px;
+      border-left: 3px solid var(--cp-accent);
+      background: var(--cp-accent-soft);
+      color: var(--cp-text);
+      font-size: 1.05rem;
+    }
+    .layer {
+      margin: 20px 0;
+      padding: 24px;
+      border: 1px solid var(--cp-border);
+      border-radius: 16px;
+      background: var(--cp-surface);
+      box-shadow: 0 1px 2px var(--cp-border);
+    }
+    .layer-number {
+      color: var(--cp-accent);
+      font-family: Consolas, "Courier New", Courier, monospace;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+    .layer h3 { margin-top: 8px; }
+    .decision {
+      margin-top: 52px;
+      padding: 28px;
+      border-radius: 16px;
+      background: var(--cp-accent);
+      color: var(--cp-accent-fg);
+    }
+    .decision h2, .decision p, .decision li, .decision strong { color: var(--cp-accent-fg); }
+    .disclaimer {
+      margin-top: 56px;
+      padding-top: 24px;
+      border-top: 1px solid var(--cp-border);
+      color: var(--cp-text-soft);
+      font-size: 0.86rem;
+    }
+    footer { padding: 24px 0; border-top: 1px solid var(--cp-border); color: var(--cp-text-muted); font-size: 0.84rem; }
+    :focus-visible { outline: 3px solid var(--cp-accent); outline-offset: 3px; }
+    @media (max-width: 600px) {
+      .shell, nav { width: min(100% - 24px, 760px); }
+      article { padding-top: 64px; }
+      .nav-actions a:first-child { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav aria-label="Primary navigation">
+      <a class="brand" href="/"><span>A.</span> Delgado</a>
+      <div class="nav-actions">
+        <a href="/writing/">All writing</a>
+        <a href="/">Portfolio</a>
+        <button id="themeToggle" aria-label="Toggle color theme" aria-pressed="false">◐</button>
+      </div>
+    </nav>
+  </header>
+  <article class="shell">
+    <p class="kicker">Practice note · Evaluation</p>
+    <h1>A three-layer evidence stack for agentic features</h1>
+    <p class="dek">
+      Offline evaluation, online experiments, and progressive rollout analysis answer different
+      questions. Treating any one of them as the whole truth is how teams become confidently wrong.
+    </p>
+    <div class="meta"><span>Alan Delgado de Oliveira</span><span>September 24, 2026</span><span>8 min read</span></div>
+
+    <p>
+      An agentic feature rarely behaves like a conventional deterministic feature. Its output depends
+      on the request, available context, tool state, retrieval quality, model behavior, and the path
+      taken through the task. That flexibility is useful, but it makes a single aggregate metric a
+      poor substitute for understanding.
+    </p>
+    <p>
+      I find it more useful to think about evaluation as a <strong>three-layer evidence stack</strong>.
+      Each layer reduces a different uncertainty. Together, they support a decision. Separately, each
+      one leaves a blind spot large enough to matter.
+    </p>
+
+    <h2>The three questions</h2>
+    <div class="layer">
+      <span class="layer-number">LAYER 01</span>
+      <h3>Offline evaluation: can the feature do the task well?</h3>
+      <p>
+        Offline evaluation creates a controlled environment for fast iteration. It should include
+        representative tasks, explicit rubrics, important slices, known failure modes, and enough
+        observability to explain why a score moved.
+      </p>
+      <p>
+        Automated judges can extend coverage, but only after calibration against human labels. Judge
+        agreement, bias by slice, sensitivity to verbosity, and drift after prompt or model changes
+        are part of the evaluation system—not implementation details.
+      </p>
+    </div>
+    <div class="layer">
+      <span class="layer-number">LAYER 02</span>
+      <h3>Online experimentation: does the feature help real users?</h3>
+      <p>
+        An offline win is evidence about a dataset and a rubric. An online experiment tests whether
+        the change affects actual behavior under real traffic, context, latency, and user expectations.
+      </p>
+      <p>
+        A useful A/B test starts with an answerable question. The primary outcome, guardrail metrics,
+        exposure logic, power assumptions, and analysis plan should follow from that question. Statistical
+        significance does not rescue a weak proxy, and a neutral aggregate can hide meaningful movement
+        in a critical population.
+      </p>
+    </div>
+    <div class="layer">
+      <span class="layer-number">LAYER 03</span>
+      <h3>Progressive rollout: does the evidence remain stable as exposure grows?</h3>
+      <p>
+        Deployment rings are more than a release mechanism. They are a sequence of populations,
+        operating conditions, and opportunities to discover failures that controlled tests did not
+        represent.
+      </p>
+      <p>
+        Early rings are intentionally small, which makes their signals noisy. The right question is
+        not whether every metric is significant. It is whether observed behavior is consistent with
+        the expected mechanism, whether guardrails remain healthy, and whether new failure modes justify
+        slowing down before broader exposure.
+      </p>
+    </div>
+
+    <h2>Why the layers disagree</h2>
+    <p>
+      Disagreement is not necessarily a measurement failure. It is often the most useful result.
+      Offline quality can improve while online behavior stays flat because the evaluation set overrepresents
+      a task, the metric rewards a property users do not value, or another system constraint dominates.
+      An online metric can improve while qualitative failures remain unacceptable. A small ring can surface
+      a severe issue that disappears in an aggregate.
+    </p>
+    <blockquote>
+      The goal is not to make every metric agree. The goal is to understand what each metric knows,
+      what it cannot know, and whether the combined evidence is strong enough for the next decision.
+    </blockquote>
+
+    <h2>A decision-oriented workflow</h2>
+    <ol>
+      <li><strong>State the behavior change.</strong> Describe what should improve, for whom, and through what mechanism.</li>
+      <li><strong>Build the failure taxonomy.</strong> Define the errors that would make the feature unhelpful or unsafe.</li>
+      <li><strong>Choose evidence by uncertainty.</strong> Use offline tests for capability and diagnosis, online experiments for user impact, and rollout analysis for stability.</li>
+      <li><strong>Predefine guardrails.</strong> Decide what must not regress before looking at results.</li>
+      <li><strong>Read slices before averages.</strong> Agent behavior is rarely uniform across tasks, languages, or user populations.</li>
+      <li><strong>Record the decision, not only the score.</strong> A good evaluation system preserves why the team shipped, held, or iterated.</li>
+    </ol>
+
+    <div class="decision">
+      <h2>The practical standard</h2>
+      <p>A shippable result should support three claims:</p>
+      <ul>
+        <li><strong>We understand the capability.</strong> Controlled evaluation shows where it works and fails.</li>
+        <li><strong>We observed user value.</strong> Online evidence supports the intended product outcome.</li>
+        <li><strong>We managed rollout risk.</strong> Progressive exposure did not reveal a reason to stop.</li>
+      </ul>
+      <p>When one claim is weak, the next action should reduce that uncertainty—not manufacture confidence from a different layer.</p>
+    </div>
+
+    <p class="disclaimer">
+      Views are my own. This article discusses general evaluation methodology and does not describe
+      confidential Microsoft product details, internal metrics, thresholds, or unreleased features.
+    </p>
+  </article>
+  <footer><div class="shell">© <span id="year"></span> Alan Delgado de Oliveira · <a href="/writing/">All writing</a></div></footer>
+  <script>
+    const root = document.documentElement;
+    const toggle = document.getElementById("themeToggle");
+    toggle.setAttribute("aria-pressed", String(root.getAttribute("data-theme") === "dark"));
+    toggle.addEventListener("click", () => {
+      const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      localStorage.setItem("portfolio-theme", next);
+      toggle.setAttribute("aria-pressed", String(next === "dark"));
+    });
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

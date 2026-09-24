@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Alan Delgado de Oliveira — Writing</title>
+    <link>https://delgadoliveira.github.io/writing/</link>
+    <description>Notes from practice and papers on AI evaluation, experimentation, agents, retrieval, and optimization.</description>
+    <language>en-us</language>
+    <item>
+      <title>A three-layer evidence stack for agentic features</title>
+      <link>https://delgadoliveira.github.io/writing/evidence-stack/</link>
+      <guid isPermaLink="true">https://delgadoliveira.github.io/writing/evidence-stack/</guid>
+      <pubDate>Thu, 24 Sep 2026 12:00:00 GMT</pubDate>
+      <description>Why offline evaluation, online experiments, and progressive rollout analysis answer different questions.</description>
+    </item>
+  </channel>
+</rss>
