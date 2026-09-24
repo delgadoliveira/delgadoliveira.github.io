@@ -1,0 +1,46 @@
+name: Site checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: site-checks-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  structure:
+    name: HTML structure and internal links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Standard library only, so this runs the same way on a laptop:
+      #   python scripts/check_site.py
+      - name: Check HTML structure, duplicate ids, and internal links
+        run: python scripts/check_site.py
+
+  reading-list:
+    name: Reading list is well formed
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # The editorial notes are the only hand-written part of the feed.
+      # If a curated entry loses them it has silently become a plain
+      # fetched abstract, which is the thing this site claims not to ship.
+      - name: Check curated entries carry editorial notes
+        run: python scripts/check_reading.py
