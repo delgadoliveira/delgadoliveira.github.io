@@ -80,20 +80,12 @@
       font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
       line-height: 1.6;
     }
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background: radial-gradient(circle at 85% 5%, var(--cp-accent-soft), transparent 30rem);
-      z-index: -1;
-    }
+    body::before { content: none; }
     a { color: inherit; }
     .shell { width: min(980px, calc(100% - 40px)); margin: 0 auto; }
     header {
       border-bottom: 1px solid var(--cp-border);
-      background: var(--cp-overlay);
-      backdrop-filter: blur(16px);
+      background: var(--cp-bg-elevated);
     }
     nav {
       min-height: 68px;
@@ -128,9 +120,9 @@
     h1 {
       max-width: 760px;
       margin: 16px 0 24px;
-      font-size: clamp(3rem, 8vw, 6rem);
-      line-height: 0.96;
-      letter-spacing: -0.06em;
+      font-size: clamp(3rem, 7vw, 5.2rem);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
     }
     .intro { max-width: 700px; color: var(--cp-text-muted); font-size: 1.15rem; }
     .stream {
@@ -146,9 +138,9 @@
       margin-bottom: 16px;
       padding: 28px;
       border: 1px solid var(--cp-border);
-      border-radius: 16px;
+      border-radius: 0.625rem;
       background: var(--cp-surface);
-      box-shadow: 0 1px 2px var(--cp-border);
+      box-shadow: none;
     }
     .post h2 { margin: 10px 0; font-size: 1.55rem; line-height: 1.15; }
     .post p { margin-bottom: 20px; color: var(--cp-text-muted); }
@@ -201,32 +193,47 @@
   </header>
   <main class="shell">
     <p class="eyebrow">Writing & reading notes</p>
-    <h1>Methods that survive contact with production.</h1>
+    <h1>Evaluation methods, computational studies, and technical notes.</h1>
     <p class="intro">
-      Notes about evaluating agentic systems, running useful experiments, improving retrieval,
-      and translating research into product decisions.
+      Reproducible examples and focused analyses of agent evaluation, online experimentation,
+      progressive deployment, retrieval, and stochastic optimization.
     </p>
 
     <section class="stream" aria-labelledby="practice-notes">
-      <h2 class="stream-label" id="practice-notes">Notes from practice</h2>
+      <h2 class="stream-label" id="practice-notes">Agent evaluation</h2>
       <div>
         <article class="post">
-          <div class="meta"><strong>Practice note</strong><span>September 24, 2026</span><span>8 min</span></div>
-          <h2>A three-layer evidence stack for agentic features</h2>
-          <p>Offline evaluation, online experiments, and progressive rollout analysis answer different questions. A reliable product decision needs all three.</p>
+          <div class="meta"><strong>Technical note</strong><span>September 23, 2026</span><span>8 min</span></div>
+          <h2>Separating capability, causal effect, and rollout risk</h2>
+          <p>A three-part evaluation model for controlled task performance, randomized online effects, and stability under progressive exposure.</p>
           <a class="post-link" href="/writing/evidence-stack/">Read the note →</a>
         </article>
-        <div class="planned"><h3>When an offline win does not predict an online result</h3><p>Planned: distribution gaps, proxy metrics, novelty effects, and measurement blind spots.</p></div>
-        <div class="planned"><h3>Calibrating an automated judge against human labels</h3><p>Planned: agreement, bias, slices, drift, and knowing when the judge should abstain.</p></div>
+        <article class="post">
+          <div class="meta"><strong>Reference implementation</strong><span>Python</span><span>8 tests</span></div>
+          <h2>Agent Evaluation Playbook</h2>
+          <p>Executable synthetic examples for task-contract evaluation, binary A/B analysis, non-inferiority guardrails, Wilson confidence bounds, and progressive rollout recommendations.</p>
+          <a class="post-link" href="https://github.com/delgadoliveira/agent-evaluation-playbook" target="_blank" rel="noreferrer">Inspect the repository ↗</a>
+        </article>
       </div>
     </section>
 
     <section class="stream" aria-labelledby="paper-notes">
-      <h2 class="stream-label" id="paper-notes">Paper notes</h2>
+      <h2 class="stream-label" id="paper-notes">Research artifacts</h2>
       <div>
-        <div class="planned"><h3>Why I read it</h3><p>The problem and the production decision that made the paper relevant.</p></div>
-        <div class="planned"><h3>What I trust—and what I do not</h3><p>The evidence, assumptions, limitations, and where I would expect the method to fail.</p></div>
-        <div class="planned"><h3>What changes in practice</h3><p>The experiment, evaluation, or decision process I would alter after reading it.</p></div>
+        <article class="post">
+          <div class="meta"><strong>Journal article</strong><span>INFORMS Journal on Computing</span><span>2025</span></div>
+          <h2>Stochastic optimization for medical evacuation</h2>
+          <p>A chance-constrained model with exogenous and decision-dependent uncertainty, Boolean reformulation, convexification, and computational analysis using realistic medical-evacuation data.</p>
+          <a class="post-link" href="https://doi.org/10.1287/ijoc.2024.0986" target="_blank" rel="noreferrer">Article ↗</a>
+          <span aria-hidden="true"> · </span>
+          <a class="post-link" href="https://github.com/INFORMSJoC/2024.0986" target="_blank" rel="noreferrer">Code and data ↗</a>
+        </article>
+        <article class="post">
+          <div class="meta"><strong>Course materials</strong><span>Portuguese</span><span>6 × 3 hours</span></div>
+          <h2>Agentes de IA: Zero to Hero</h2>
+          <p>Technical material covering ReAct, planning, tool execution, MCP, context management, RAG, memory, multi-agent systems, evaluation, observability, and guardrails.</p>
+          <a class="post-link" href="https://delgadoliveira.github.io/topicos-especiais-ia/" target="_blank" rel="noreferrer">Open course ↗</a>
+        </article>
       </div>
     </section>
 

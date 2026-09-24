@@ -6,10 +6,10 @@
   <meta name="description" content="A three-layer evidence stack for evaluating agentic features: offline evaluation, online experiments, and progressive rollout analysis.">
   <link rel="canonical" href="https://delgadoliveira.github.io/writing/evidence-stack/">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="A three-layer evidence stack for agentic features">
+  <meta property="og:title" content="Separating capability, causal effect, and rollout risk">
   <meta property="og:description" content="Why offline evaluation, online experiments, and progressive rollout analysis answer different questions.">
-  <meta property="article:published_time" content="2026-09-24">
-  <title>A three-layer evidence stack for agentic features — Alan Delgado</title>
+  <meta property="article:published_time" content="2026-09-23">
+  <title>Separating capability, causal effect, and rollout risk — Alan Delgado</title>
   <script>
     (() => {
       const param = new URLSearchParams(window.location.search).get("clawpilotTheme");
@@ -199,12 +199,12 @@
   </header>
   <article class="shell">
     <p class="kicker">Practice note · Evaluation</p>
-    <h1>A three-layer evidence stack for agentic features</h1>
+    <h1>Separating capability, causal effect, and rollout risk</h1>
     <p class="dek">
-      Offline evaluation, online experiments, and progressive rollout analysis answer different
-      questions. Treating any one of them as the whole truth is how teams become confidently wrong.
+      Offline evaluation, randomized experiments, and progressive rollout analysis estimate different
+      quantities. Conflating them produces conclusions that the underlying measurements do not support.
     </p>
-    <div class="meta"><span>Alan Delgado de Oliveira</span><span>September 24, 2026</span><span>8 min read</span></div>
+    <div class="meta"><span>Alan Delgado de Oliveira</span><span>September 23, 2026</span><span>8 min read</span></div>
 
     <p>
       An agentic feature rarely behaves like a conventional deterministic feature. Its output depends
@@ -287,8 +287,8 @@
     </ol>
 
     <div class="decision">
-      <h2>The practical standard</h2>
-      <p>A shippable result should support three claims:</p>
+      <h2>A decision criterion</h2>
+      <p>An evidence-based deployment decision should support three claims:</p>
       <ul>
         <li><strong>We understand the capability.</strong> Controlled evaluation shows where it works and fails.</li>
         <li><strong>We observed user value.</strong> Online evidence supports the intended product outcome.</li>

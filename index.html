@@ -102,14 +102,7 @@
       line-height: 1.6;
     }
     body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at 85% 10%, var(--cp-accent-soft), transparent 32rem),
-        linear-gradient(var(--cp-sheen), transparent 24rem);
-      z-index: -1;
+      content: none;
     }
     a { color: inherit; }
     img { display: block; max-width: 100%; }
@@ -131,8 +124,7 @@
       top: 0;
       z-index: 30;
       border-bottom: 1px solid var(--cp-border);
-      background: var(--cp-overlay);
-      backdrop-filter: blur(16px);
+      background: var(--cp-bg-elevated);
     }
     .nav {
       min-height: 68px;
@@ -168,12 +160,12 @@
     }
     .theme-toggle:hover { border-color: var(--cp-accent); color: var(--cp-accent); }
     .hero {
-      min-height: calc(100vh - 68px);
+      min-height: min(780px, calc(100vh - 68px));
       display: grid;
-      grid-template-columns: 1.35fr 0.65fr;
+      grid-template-columns: 1fr 280px;
       align-items: center;
-      gap: 64px;
-      padding: 80px 0;
+      gap: 80px;
+      padding: 96px 0;
     }
     .eyebrow {
       display: inline-flex;
@@ -194,11 +186,11 @@
     }
     h1, h2, h3, p { margin-top: 0; }
     h1 {
-      max-width: 780px;
+      max-width: 820px;
       margin-bottom: 24px;
-      font-size: clamp(3rem, 7vw, 6.3rem);
-      line-height: 0.96;
-      letter-spacing: -0.065em;
+      font-size: clamp(3rem, 6vw, 5.4rem);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
     }
     .hero-name { color: var(--cp-accent); }
     .hero-copy {
@@ -233,40 +225,36 @@
     .portrait-wrap {
       position: relative;
       justify-self: end;
-      width: min(100%, 340px);
+      width: min(100%, 280px);
     }
     .portrait-wrap::before {
-      content: "";
-      position: absolute;
-      inset: -14px 18px 18px -14px;
-      border: 2px solid var(--cp-accent);
-      border-radius: 16px;
-      z-index: -1;
+      content: none;
     }
     .portrait {
       width: 100%;
       aspect-ratio: 1;
       object-fit: cover;
       border: 1px solid var(--cp-border);
-      border-radius: 16px;
+      border-radius: 0.625rem;
       background: var(--cp-surface);
       filter: saturate(0.82);
     }
     .status {
-      position: absolute;
-      right: -18px;
-      bottom: 24px;
-      max-width: 220px;
-      padding: 12px 16px;
-      border: 1px solid var(--cp-border);
-      border-radius: 0.625rem;
-      background: var(--cp-panel-strong);
-      box-shadow: 0 1px 2px var(--cp-border);
+      position: static;
+      max-width: none;
+      padding: 12px 0 0;
+      border: 0;
+      background: transparent;
       color: var(--cp-text-muted);
       font-size: 0.84rem;
     }
     .status strong { display: block; color: var(--cp-text); }
-    section { padding: 88px 0; scroll-margin-top: 60px; }
+    section {
+      padding: 88px 0;
+      border-top: 1px solid var(--cp-border);
+      scroll-margin-top: 60px;
+    }
+    .hero { border-top: 0; }
     .section-head {
       display: grid;
       grid-template-columns: 0.5fr 1fr;
@@ -281,9 +269,9 @@
     }
     h2 {
       margin-bottom: 12px;
-      font-size: clamp(2.1rem, 5vw, 3.8rem);
-      line-height: 1;
-      letter-spacing: -0.045em;
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
     }
     .section-intro { max-width: 680px; margin-bottom: 0; color: var(--cp-text-muted); }
     .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
@@ -326,9 +314,9 @@
     .fact span { color: var(--cp-text-muted); font-size: 0.85rem; }
     .profile-card, .project-card, .publication, .course {
       border: 1px solid var(--cp-border);
-      border-radius: 16px;
+      border-radius: 0.625rem;
       background: var(--cp-surface);
-      box-shadow: 0 1px 2px var(--cp-border);
+      box-shadow: none;
     }
     .profile-card { padding: 28px; }
     .card-kicker {
@@ -350,9 +338,9 @@
       min-height: 250px;
       padding: 28px;
       border: 1px solid var(--cp-border);
-      border-radius: 16px;
+      border-radius: 0.625rem;
       background: var(--cp-surface);
-      box-shadow: 0 1px 2px var(--cp-border);
+      box-shadow: none;
     }
     .practice-card h3 { margin: 14px 0 10px; font-size: 1.2rem; }
     .practice-card p { margin-bottom: 0; color: var(--cp-text-muted); font-size: 0.92rem; }
@@ -413,22 +401,27 @@
     .education-item span { color: var(--cp-text-muted); font-size: 0.84rem; }
     .writing-grid {
       display: grid;
-      grid-template-columns: 1.35fr 0.65fr 0.65fr;
-      gap: 16px;
+      grid-template-columns: 1fr;
+      gap: 0;
+      border-top: 1px solid var(--cp-border);
     }
     .writing-card {
-      min-height: 300px;
-      display: flex;
-      flex-direction: column;
-      padding: 28px;
-      border: 1px solid var(--cp-border);
-      border-radius: 16px;
-      background: var(--cp-surface);
-      box-shadow: 0 1px 2px var(--cp-border);
+      min-height: 0;
+      display: grid;
+      grid-template-columns: 180px 1fr auto;
+      align-items: start;
+      gap: 28px;
+      padding: 28px 0;
+      border: 0;
+      border-bottom: 1px solid var(--cp-border);
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
     }
-    .writing-card:first-child { background: var(--cp-bg-elevated); }
-    .writing-card h3 { margin: 18px 0 12px; font-size: 1.35rem; line-height: 1.15; }
-    .writing-card p { color: var(--cp-text-muted); font-size: 0.92rem; }
+    .writing-card:first-child { background: transparent; }
+    .writing-card h3 { margin: 0 0 8px; font-size: 1.28rem; line-height: 1.2; }
+    .writing-card p { max-width: 680px; margin: 0; color: var(--cp-text-muted); font-size: 0.92rem; }
+    .writing-card .text-link { align-self: center; margin-top: 0; white-space: nowrap; }
     .writing-meta {
       display: flex;
       flex-wrap: wrap;
@@ -452,9 +445,9 @@
       padding: 28px;
       display: flex;
       flex-direction: column;
-      transition: transform 180ms ease, border-color 180ms ease;
+      transition: border-color 180ms ease;
     }
-    .project-card:hover { transform: translateY(-4px); border-color: var(--cp-accent); }
+    .project-card:hover { border-color: var(--cp-border-strong); }
     .project-card.featured {
       grid-row: span 2;
       min-height: 556px;
@@ -548,8 +541,8 @@
     .contact-card {
       padding: clamp(32px, 7vw, 76px);
       border: 1px solid var(--cp-border);
-      border-radius: 16px;
-      background: var(--cp-surface);
+      border-radius: 0.625rem;
+      background: transparent;
     }
     .contact-card p { max-width: 650px; margin: 0 auto 28px; color: var(--cp-text-muted); }
     footer {
@@ -584,6 +577,8 @@
       .profile-grid { grid-template-columns: 1fr; }
       .practice-grid { grid-template-columns: repeat(2, 1fr); }
       .writing-grid { grid-template-columns: 1fr; }
+      .writing-card { grid-template-columns: 1fr; gap: 10px; }
+      .writing-card .text-link { justify-self: start; }
       .facts { grid-template-columns: repeat(2, 1fr); }
       .role { grid-template-columns: 1fr; gap: 6px; }
       .education-grid { grid-template-columns: 1fr; }
@@ -601,7 +596,6 @@
       .publication { grid-template-columns: 1fr; gap: 8px; }
       .pub-link { margin-top: 4px; }
       .footer-row { flex-direction: column; }
-      .status { right: -8px; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -621,7 +615,7 @@
         <a href="#practice">Practice</a>
         <a href="#experience">Experience</a>
         <a href="#writing">Writing</a>
-        <a href="#work">Open source</a>
+        <a href="#work">Software</a>
         <a href="#course">Course</a>
         <a href="#research">Research</a>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme" aria-pressed="false" title="Toggle theme">◐</button>
@@ -633,16 +627,16 @@
     <section class="hero shell" id="top">
       <div>
         <p class="eyebrow">Applied Science · Evaluation · AI Agents</p>
-        <h1>Turning agent behavior into <span class="hero-name">evidence teams can ship on.</span></h1>
+        <h1>Evaluating agentic systems from <span class="hero-name">controlled benchmarks to deployed behavior.</span></h1>
         <p class="hero-copy">
           I’m Alan Delgado de Oliveira, a Senior Applied Scientist working on Microsoft 365 Copilot.
-          I build agentic product features and the evidence used to improve them—offline evaluation,
-          online A/B experiments, and staged validation across deployment rings.
+          My work combines the implementation of agentic features with offline evaluation, controlled
+          online experiments, and longitudinal analysis across progressive deployment stages.
         </p>
         <div class="actions">
-          <a class="button" href="#writing">Read my writing <span aria-hidden="true">↓</span></a>
-          <a class="button secondary" href="https://www.linkedin.com/in/delgadoliveira" target="_blank" rel="noreferrer">LinkedIn ↗</a>
-          <a class="button secondary" href="#research">Research ↓</a>
+          <a class="button" href="#practice">Evaluation methodology <span aria-hidden="true">↓</span></a>
+          <a class="button secondary" href="#writing">Technical writing ↓</a>
+          <a class="button secondary" href="#research">Publications ↓</a>
         </div>
       </div>
       <div class="portrait-wrap" aria-label="Portrait of Alan Delgado de Oliveira">
@@ -654,12 +648,12 @@
     <section id="profile">
       <div class="shell">
         <div class="section-head reveal">
-          <div><span class="section-number">01 / Current focus</span></div>
+          <div><span class="section-number">01 / Research profile</span></div>
           <div>
-            <h2>Applied science for agentic products.</h2>
+            <h2>Applied science for agentic systems.</h2>
             <p class="section-intro">
-              I work where product development and scientific evidence meet: implementing agentic
-              experiences, measuring their quality, and turning incomplete signals into sound decisions.
+              I study how agentic behavior can be specified, measured, and improved under realistic
+              conditions, with particular attention to experimental validity, uncertainty, and failure analysis.
             </p>
           </div>
         </div>
@@ -704,10 +698,10 @@
         <div class="section-head reveal">
           <div><span class="section-number">02 / Practice</span></div>
           <div>
-            <h2>How I work.</h2>
+            <h2>Evaluation methodology.</h2>
             <p class="section-intro">
-              Product specifics remain confidential. The methods are the durable part: a disciplined
-              path from agent design to evidence, rollout, and iteration.
+              My work treats evaluation as a sequence of complementary measurement problems, from
+              controlled task-level analysis to randomized experiments and progressive deployment.
             </p>
           </div>
         </div>
@@ -743,7 +737,8 @@
               <p class="role-description">
                 I design evaluation and experimentation approaches for agentic chat features: offline
                 suites that estimate quality, online experiments that test user-visible outcomes, and
-                staged analysis across deployment rings that informs ship, hold, and iteration decisions.
+                staged analysis across deployment rings that supports decisions about further exposure,
+                revision, or rollback.
                 I also work on query and retrieval quality upstream of generation.
               </p>
             </div>
@@ -817,32 +812,41 @@
         <div class="section-head reveal">
           <div><span class="section-number">04 / Writing</span></div>
           <div>
-            <h2>Notes from practice and papers.</h2>
+            <h2>Technical notes and reproducible artifacts.</h2>
             <p class="section-intro">
-              Public writing about evaluation, experimentation, agents, retrieval, and the research
-              ideas that change how I approach production decisions.
+              Concrete treatments of measurement problems, statistical assumptions, implementation
+              choices, and research results relevant to agentic systems.
             </p>
           </div>
         </div>
         <div class="writing-grid">
           <article class="writing-card reveal">
-            <div class="writing-meta"><span class="writing-type">Practice note</span><span>8 min</span></div>
-            <h3>A three-layer evidence stack for agentic features</h3>
-            <p>Why offline evaluation, online experiments, and progressive rollout analysis answer different questions—and why a strong ship decision needs all three.</p>
-            <a class="text-link" href="writing/evidence-stack/">Read the note →</a>
+            <div class="writing-meta"><span class="writing-type">Reference implementation</span><span>Python</span></div>
+            <div>
+              <h3>An executable protocol for agent evaluation</h3>
+              <p>A synthetic end-to-end example combining deterministic task contracts, difference-in-proportions confidence intervals, guardrail non-inferiority, Wilson lower bounds, and ring-level expand/continue/hold rules.</p>
+            </div>
+            <a class="text-link" href="https://github.com/delgadoliveira/agent-evaluation-playbook" target="_blank" rel="noreferrer">Inspect code ↗</a>
           </article>
           <article class="writing-card reveal">
-            <div class="writing-meta"><span class="writing-type">Paper notes</span><span>Series</span></div>
-            <h3>What I read, and what changes in practice</h3>
-            <p>Structured notes on evaluation, agents, retrieval, experimentation, and optimization papers.</p>
-            <a class="text-link" href="writing/">Browse writing →</a>
+            <div class="writing-meta"><span class="writing-type">Technical note</span><span>8 min</span></div>
+            <div>
+              <h3>Separating capability, causal effect, and rollout risk</h3>
+              <p>A formal decomposition of three evaluation questions: whether an agent can complete a task under controlled conditions, whether a treatment changes user outcomes, and whether quality remains stable as exposure expands.</p>
+            </div>
+            <a class="text-link" href="writing/evidence-stack/">Read note →</a>
           </article>
           <article class="writing-card reveal">
-            <div class="writing-meta"><span class="writing-type">Next</span><span>Planned</span></div>
-            <h3>When an offline win does not predict an online result</h3>
-            <p>A practical look at distribution gaps, proxy metrics, novelty, and measurement blind spots.</p>
-            <a class="text-link" href="writing/">See the roadmap →</a>
+            <div class="writing-meta"><span class="writing-type">Journal article + code</span><span>INFORMS JOC</span></div>
+            <div>
+              <h3>Medical evacuation with exogenous and decision-dependent uncertainty</h3>
+              <p>A chance-constrained stochastic optimization model, Boolean reformulation, convexification framework, and public computational experiments for reliable medical-evacuation network design.</p>
+            </div>
+            <a class="text-link" href="https://github.com/INFORMSJoC/2024.0986" target="_blank" rel="noreferrer">Code & data ↗</a>
           </article>
+        </div>
+        <div class="actions reveal" style="margin-top: 28px;">
+          <a class="button secondary" href="writing/">Writing index →</a>
         </div>
       </div>
     </section>
@@ -850,15 +854,15 @@
     <section id="work">
       <div class="shell">
         <div class="section-head reveal">
-          <div><span class="section-number">05 / Open source & side projects</span></div>
+          <div><span class="section-number">05 / Technical implementations</span></div>
           <div>
-            <h2>Ideas made concrete.</h2>
-            <p class="section-intro">Public projects from different stages of my work in trustworthy AI, language technologies, education, and applied modeling.</p>
+            <h2>Open methods and software.</h2>
+            <p class="section-intro">Public implementations spanning agent evaluation, stochastic optimization, responsible AI, and natural language processing.</p>
           </div>
         </div>
         <div class="projects-grid">
           <article class="project-card featured reveal">
-            <div class="project-meta"><span>2026 · FEATURED PROJECT</span><span>PYTHON · AGENT EVALUATION</span></div>
+            <div class="project-meta"><span>2026 · REFERENCE IMPLEMENTATION</span><span>PYTHON · AGENT EVALUATION</span></div>
             <div>
               <span class="card-kicker">Public methods, synthetic data</span>
               <h3>Agent Evaluation Playbook</h3>
@@ -998,12 +1002,13 @@
     <section class="contact" id="contact">
       <div class="shell">
         <div class="contact-card reveal">
-          <span class="card-kicker">Let’s connect</span>
-          <h2>Let’s compare methods, not confidential details.</h2>
-          <p>I’m interested in conversations about agent evaluation, experimentation, retrieval quality, applied research, teaching, and paper reviewing.</p>
+          <span class="card-kicker">Technical and research interests</span>
+          <h2>Evaluation, experimentation, optimization, and agentic systems.</h2>
+          <p>My current interests include measurement methodology for AI agents, randomized online experiments, retrieval and query quality, stochastic optimization, and technical education.</p>
           <div class="actions" style="justify-content: center;">
-            <a class="button" href="https://www.linkedin.com/in/delgadoliveira" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+            <a class="button" href="https://scholar.google.com/citations?user=CW01zIAAAAAJ&hl=en" target="_blank" rel="noreferrer">Google Scholar ↗</a>
             <a class="button secondary" href="https://github.com/delgadoliveira" target="_blank" rel="noreferrer">GitHub ↗</a>
+            <a class="button secondary" href="https://www.linkedin.com/in/delgadoliveira" target="_blank" rel="noreferrer">LinkedIn ↗</a>
           </div>
         </div>
       </div>
