@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T12:23:57Z",
+  "generated": "2026-10-05T13:03:59Z",
   "source": "Hugging Face papers API",
   "min_score": 9,
   "tracks": [
@@ -23,7 +23,7 @@
           "published": "2023-06-09",
           "upvotes": 44,
           "github": "https://github.com/lm-sys/fastchat",
-          "github_stars": 39551,
+          "github_stars": 39555,
           "url": "https://arxiv.org/abs/2306.05685",
           "hf_url": "https://huggingface.co/papers/2306.05685",
           "establishes": "A strong model judge can reach roughly the same agreement with human raters that humans reach with each other on open-ended preference comparisons.",
@@ -44,7 +44,7 @@
           "published": "2023-10-10",
           "upvotes": 13,
           "github": "https://github.com/SWE-bench/SWE-bench",
-          "github_stars": 5926,
+          "github_stars": 5971,
           "url": "https://arxiv.org/abs/2310.06770",
           "hf_url": "https://huggingface.co/papers/2310.06770",
           "establishes": "Evaluation can be execution-verified against real repository issues and their tests, instead of graded by another model.",
@@ -85,7 +85,7 @@
           "published": "2024-06-17",
           "upvotes": 13,
           "github": "https://github.com/sierra-research/tau-bench",
-          "github_stars": 1447,
+          "github_stars": 1455,
           "url": "https://arxiv.org/abs/2406.12045",
           "hf_url": "https://huggingface.co/papers/2406.12045",
           "establishes": "Single-run success overstates reliability. Its pass^k metric shows consistency degrading sharply across repeated trials of the same task.",
@@ -106,7 +106,7 @@
           "published": "2023-08-07",
           "upvotes": 26,
           "github": "https://github.com/thudm/agentbench",
-          "github_stars": 3755,
+          "github_stars": 3763,
           "url": "https://arxiv.org/abs/2308.03688",
           "hf_url": "https://huggingface.co/papers/2308.03688",
           "establishes": "How differently one agent performs across eight distinct environments.",
@@ -215,21 +215,20 @@
           "score": 15
         },
         {
-          "id": "2609.26489",
-          "title": "Calibration as a First-Class Criterion in LLM Evaluation",
+          "id": "2606.20950",
+          "title": "Power Systems Agent Benchmark: Executable Evaluation of AI Agents in Electric Power Engineering",
           "authors": [
-            "Mario Sanz-Guerrero",
-            "Katharina von der Wense"
+            "Sergei Trashchenkov"
           ],
-          "author_count": 2,
-          "summary": "Calibration of language models -- the alignment between expressed or implicit confidence and empirical correctness -- is a well-studied subfield within NLP. Methods to measure it already exist. The problem is adoption: outside this subfield, NLP research regularly introduces new models, datasets, and benchmarks without checking whether the model's confidence scores are meaningful. We argue that th…",
-          "published": "2026-09-21",
-          "upvotes": 2,
-          "github": "",
-          "github_stars": 0,
-          "url": "https://arxiv.org/abs/2609.26489",
-          "hf_url": "https://huggingface.co/papers/2609.26489",
-          "hot": true,
+          "author_count": 1,
+          "summary": "Executable evaluation -- checking the consequences of an agent's actions with a program rather than grading its prose -- has become a prominent way to assess tool-using AI agents in software settings. Electric power engineering has not yet had an analogous benchmark: language-model use is still dominated by retrieval and text question answering, while agents acting on power-system artifacts remain…",
+          "published": "2026-07-01",
+          "upvotes": 1,
+          "github": "https://github.com/trashchenkov/power-systems-agent-benchmark",
+          "github_stars": 3,
+          "url": "https://arxiv.org/abs/2606.20950",
+          "hf_url": "https://huggingface.co/papers/2606.20950",
+          "hot": false,
           "score": 15
         }
       ]
@@ -508,7 +507,7 @@
           "published": "2023-07-06",
           "upvotes": 44,
           "github": "https://github.com/nelson-liu/lost-in-the-middle",
-          "github_stars": 395,
+          "github_stars": 396,
           "url": "https://arxiv.org/abs/2307.03172",
           "hf_url": "https://huggingface.co/papers/2307.03172",
           "establishes": "Position inside the context window changes accuracy: relevant material placed in the middle is used least.",
@@ -591,7 +590,7 @@
           "published": "2025-08-02",
           "upvotes": 240,
           "github": "https://github.com/ChengshuaiZhao0/DataAlchemy",
-          "github_stars": 129,
+          "github_stars": 130,
           "url": "https://arxiv.org/abs/2508.01191",
           "hf_url": "https://huggingface.co/papers/2508.01191",
           "hot": false,
@@ -703,7 +702,7 @@
           "published": "2022-03-04",
           "upvotes": 26,
           "github": "https://github.com/openai/following-instructions-human-feedback",
-          "github_stars": 1257,
+          "github_stars": 1258,
           "url": "https://arxiv.org/abs/2203.02155",
           "hf_url": "https://huggingface.co/papers/2203.02155",
           "establishes": "Alignment to instructions beats raw scale on human preference: a 1.3B model was preferred over 175B GPT-3.",
@@ -753,6 +752,27 @@
           "score": 22
         },
         {
+          "id": "2606.15396",
+          "title": "CHILLGuard: Towards Fine-Grained Chinese LLM Safety Guardrail with Scalable Data Construction and Model-aware Preference Alignment",
+          "authors": [
+            "Wenbo Yu",
+            "Bohua Wang",
+            "Hao Fang",
+            "Kuofeng Gao",
+            "Jingru Zeng"
+          ],
+          "author_count": 13,
+          "summary": "Malicious content generated from large language models (LLMs) could pose severe safety risks and ethical concerns. While existing LLM safety guardrails excel in English or multilingual settings, they lack adaptation to Chinese-specific regulatory policies, cultural context, and linguistic nuances, failing to support fine-grained risk classification for diverse deployment needs. In this paper, we i…",
+          "published": "2026-09-30",
+          "upvotes": 0,
+          "github": "https://github.com/cswbyu/CHILLGuard",
+          "github_stars": 7,
+          "url": "https://arxiv.org/abs/2606.15396",
+          "hf_url": "https://huggingface.co/papers/2606.15396",
+          "hot": false,
+          "score": 21
+        },
+        {
           "id": "2511.18397",
           "title": "Natural Emergent Misalignment from Reward Hacking in Production RL",
           "authors": [
@@ -788,7 +808,7 @@
           "published": "2026-04-14",
           "upvotes": 31,
           "github": "https://github.com/xhwang22/Awesome-Reward-Hacking",
-          "github_stars": 53,
+          "github_stars": 54,
           "url": "https://arxiv.org/abs/2604.13602",
           "hf_url": "https://huggingface.co/papers/2604.13602",
           "hot": false,
@@ -832,24 +852,6 @@
           "hf_url": "https://huggingface.co/papers/2412.09544",
           "hot": false,
           "score": 16
-        },
-        {
-          "id": "2512.02711",
-          "title": "CREST: Universal Safety Guardrails Through Cluster-Guided Cross-Lingual Transfer",
-          "authors": [
-            "Lavish Bansal",
-            "Naman Mishra"
-          ],
-          "author_count": 2,
-          "summary": "Ensuring content safety in large language models (LLMs) is essential for their deployment in real-world applications. However, existing safety guardrails are predominantly tailored for high-resource languages, leaving a significant portion of the world's population underrepresented who communicate in low-resource languages. To address this, we introduce CREST (CRoss-lingual Efficient Safety Transf…",
-          "published": "2025-12-02",
-          "upvotes": 0,
-          "github": "",
-          "github_stars": 0,
-          "url": "https://arxiv.org/abs/2512.02711",
-          "hf_url": "https://huggingface.co/papers/2512.02711",
-          "hot": false,
-          "score": 15
         }
       ]
     }
