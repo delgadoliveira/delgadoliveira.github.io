@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-09T14:43:37Z",
+  "generated": "2026-11-16T14:19:53Z",
   "source": "Hugging Face papers API",
   "min_score": 9,
   "tracks": [
@@ -23,7 +23,7 @@
           "published": "2023-06-09",
           "upvotes": 44,
           "github": "https://github.com/lm-sys/fastchat",
-          "github_stars": 39547,
+          "github_stars": 39551,
           "url": "https://arxiv.org/abs/2306.05685",
           "hf_url": "https://huggingface.co/papers/2306.05685",
           "establishes": "A strong model judge can reach roughly the same agreement with human raters that humans reach with each other on open-ended preference comparisons.",
@@ -44,7 +44,7 @@
           "published": "2023-10-10",
           "upvotes": 13,
           "github": "https://github.com/SWE-bench/SWE-bench",
-          "github_stars": 6162,
+          "github_stars": 6198,
           "url": "https://arxiv.org/abs/2310.06770",
           "hf_url": "https://huggingface.co/papers/2310.06770",
           "establishes": "Evaluation can be execution-verified against real repository issues and their tests, instead of graded by another model.",
@@ -85,7 +85,7 @@
           "published": "2024-06-17",
           "upvotes": 13,
           "github": "https://github.com/sierra-research/tau-bench",
-          "github_stars": 1496,
+          "github_stars": 1509,
           "url": "https://arxiv.org/abs/2406.12045",
           "hf_url": "https://huggingface.co/papers/2406.12045",
           "establishes": "Single-run success overstates reliability. Its pass^k metric shows consistency degrading sharply across repeated trials of the same task.",
@@ -106,7 +106,7 @@
           "published": "2023-08-07",
           "upvotes": 26,
           "github": "https://github.com/thudm/agentbench",
-          "github_stars": 3817,
+          "github_stars": 3825,
           "url": "https://arxiv.org/abs/2308.03688",
           "hf_url": "https://huggingface.co/papers/2308.03688",
           "establishes": "How differently one agent performs across eight distinct environments.",
@@ -389,27 +389,6 @@
           "score": 18
         },
         {
-          "id": "2511.02734",
-          "title": "CostBench: Evaluating Multi-Turn Cost-Optimal Planning and Adaptation in Dynamic Environments for LLM Tool-Use Agents",
-          "authors": [
-            "Jiayu Liu",
-            "Cheng Qian",
-            "Zhaochen Su",
-            "Qing Zong",
-            "Shijue Huang"
-          ],
-          "author_count": 7,
-          "summary": "Current evaluations of Large Language Model (LLM) agents primarily emphasize task completion, often overlooking resource efficiency and adaptability. This neglects a crucial capability: agents' ability to devise and adjust cost-optimal plans in response to changing environments. To bridge this gap, we introduce CostBench, a scalable, cost-centric benchmark designed to evaluate agents' economic rea…",
-          "published": "2025-11-04",
-          "upvotes": 23,
-          "github": "https://github.com/JiayuJeff/CostBench",
-          "github_stars": 36,
-          "url": "https://arxiv.org/abs/2511.02734",
-          "hf_url": "https://huggingface.co/papers/2511.02734",
-          "hot": false,
-          "score": 18
-        },
-        {
           "id": "2511.05269",
           "title": "TAMAS: Benchmarking Adversarial Risks in Multi-Agent LLM Systems",
           "authors": [
@@ -448,6 +427,27 @@
           "github_stars": 0,
           "url": "https://arxiv.org/abs/2604.23853",
           "hf_url": "https://huggingface.co/papers/2604.23853",
+          "hot": false,
+          "score": 16
+        },
+        {
+          "id": "2604.17503",
+          "title": "SkillGraph: Self-Evolving Multi-Agent Collaboration with Multimodal Graph Topology",
+          "authors": [
+            "Zheng Nie",
+            "Ruolin Shen",
+            "Xinlei Yu",
+            "Bo Yin",
+            "Jiangning Zhang"
+          ],
+          "author_count": 6,
+          "summary": "Scaling vision-language models into Visual Multiagent Systems (VMAS) is hindered by two coupled issues. First, communication topologies are fixed before inference, leaving them blind to visual content and query context; second, agent reasoning abilities remain static during deployment. These issues reinforce each other: a rigid topology fails to leverage richer agent expertise, while static agents…",
+          "published": "2026-04-18",
+          "upvotes": 0,
+          "github": "",
+          "github_stars": 0,
+          "url": "https://arxiv.org/abs/2604.17503",
+          "hf_url": "https://huggingface.co/papers/2604.17503",
           "hot": false,
           "score": 16
         }
@@ -515,7 +515,7 @@
           "published": "2023-07-06",
           "upvotes": 44,
           "github": "https://github.com/nelson-liu/lost-in-the-middle",
-          "github_stars": 402,
+          "github_stars": 401,
           "url": "https://arxiv.org/abs/2307.03172",
           "hf_url": "https://huggingface.co/papers/2307.03172",
           "establishes": "Position inside the context window changes accuracy: relevant material placed in the middle is used least.",
@@ -710,7 +710,7 @@
           "published": "2022-03-04",
           "upvotes": 26,
           "github": "https://github.com/openai/following-instructions-human-feedback",
-          "github_stars": 1261,
+          "github_stars": 1262,
           "url": "https://arxiv.org/abs/2203.02155",
           "hf_url": "https://huggingface.co/papers/2203.02155",
           "establishes": "Alignment to instructions beats raw scale on human preference: a 1.3B model was preferred over 175B GPT-3.",
